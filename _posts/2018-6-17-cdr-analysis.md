@@ -39,6 +39,7 @@ $$
 Imagine we want to partition rows and columns into 2 clusters, i.e 4 blocks in the matrix. Grouping cells 1 and 2, as well as cells 3 and 4 produces the best partition. Indeed, both cells 1 and 2 are linked to 3 and 4, and in the same proportions. Conversely, grouping 1 and 3, as well as 2 and 4 produces the worst partition.
 The best partition is called \\(C_B\\) and the worst partition \\(C_W\\) (with respective joint probability matrices \\(P_B\\) and \\(P_W\\)).
 
+$$
 \begin{align}
 C_B = \begin{pmatrix}
 0 & 6 \\\\
@@ -52,6 +53,7 @@ C_W = \begin{pmatrix}
 \\\\
 MI(P_B) = \log(2) & MI(P_B) = 0
 \end{align}
+$$
 
 The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy. Note that the modularity maximization algorithm would not be able to produce such a partition but put all nodes in a single cluster.
 
