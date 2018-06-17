@@ -20,17 +20,34 @@ While modularity maximization aims at grouping cells being densely connected, in
 
 {% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
-Let's define \\(A\\) the adjacency matrix of size n (number of cells) and $P$ the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(P\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(P\\). 
+Let's define \\(A\\) the adjacency matrix of size n (number of cells) and $P$ the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(C\\). 
 
 Let's use a simple example to illustrate the behavior of the mutual information:
 
-$$ A = \begin{pmatrix} 
-1 & 1 & 0 & 0 \\
-1 & 1 & 0 & 0 \\
-0 & 0 & 1 & 1 \\
-0 & 0 & 1 & 1
+$$ A = \begin{pmatrix}
+0 & 0 & 2 & 1 \\
+0 & 0 & 2 & 1 \\
+1 & 2 & 0 & 0 \\
+1 & 2 & 0 & 0
 \end{pmatrix}
 $$
+
+Imagine we want to partition rows and columns into 2 clusters, i.e 4 blocks in the matrix. Grouping cells 1 and 2, as well as cells 3 and 4 produces the best partition. Indeed, both cells 1 and 2 are linked to 3 and 4, and in the same proportions. Conversely, grouping 1 and 3, and 2 and 4 produces the worst partition.
+The best partition is called \\(C_B\\) and the worst partition \\(C_W\\).
+
+\begin{equation}
+\begin{split}
+C_B = \begin{pmatrix}
+0 & 6 \\
+6 & 0
+\end{pmatrix}
+&
+C_W = \begin{pmatrix}
+3 & 3 \\
+3 & 3
+\end{pmatrix}
+\end{equation}
+\end{split}
 
 ## Information theoretic coclustering
 
