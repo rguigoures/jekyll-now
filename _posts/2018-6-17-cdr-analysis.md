@@ -42,16 +42,16 @@ The best partition is called \\(C_B\\) and the worst partition \\(C_W\\) (with r
 $$
 \begin{align}
 C_B = \begin{pmatrix}
-0 & 6 \\\\
+0 & 6 \\
 6 & 0
 \end{pmatrix}
-&
+& \mbox{ ; } &
 C_W = \begin{pmatrix}
-3 & 3 \\\\
+3 & 3 \\
 3 & 3
 \end{pmatrix}
 \\\\
-MI(P_B) = \log(2) & MI(P_B) = 0
+MI(P_B) = \log(2) & \mbox{ ; } & MI(P_B) = 0
 \end{align}
 $$
 
