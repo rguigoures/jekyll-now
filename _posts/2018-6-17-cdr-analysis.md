@@ -57,6 +57,23 @@ $$
 
 The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy. Note that the modularity maximization algorithm would not be able to produce such a partition but put all nodes in a single cluster.
 
+In order to find the best partition, we apply an algorithm similar to k-means:
+1. clusters are initialized randomly and balanced,
+2. each cell is allocated to the cluster, so that the mutual information is maximized,
+3. iterate until clusters do not change anymore.
+
+K-means algorithms aims at minimizing the intra-cluster variance at each iteration. But according to the Huyghens theorem, minimizing the intra-cluster variance is equivalent to maximizing the inter-class variance since the sum of the intra-cluster and the inter-cluster variance is equal to the data variance. The mutual information, in the case of information theoretic clustering can be seen as an inter-cluster variance maximization.
+
+Let's apply the mutual information maximization algorithm to the call detail record. We fix the number of clusters to five. To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Secondly, the mutual information matrix \\(M = \{m_{ij} \i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
+
+First, let's plot the two matrices for randomly initialized clusters.
+
+{% include image.html url1="https://rguigoures.github.io/images/density_mi_random.png" width=700 description="Fig.2 - Random partition of the CDR. Joint probability matrix (left) and mutual information matrix (right)" %}
+
+Finally, we run the algorithm and plot the same matrices for the obtained partitions.
+
+{% include image.html url1="https://rguigoures.github.io/images/density_mi_clusters.png" width=700 description="Fig.3 - Partition of the CDR obtained by maximization of the mutual information. Joint probability matrix (left) and mutual information matrix (right)" %}
+
 ## Information theoretic coclustering
 
 # Bayesian blockmodeling
