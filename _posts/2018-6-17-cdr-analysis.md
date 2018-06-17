@@ -53,7 +53,7 @@ C_W = \begin{pmatrix}
 MI(P_B) = \log(2) & MI(P_B) = 0
 \end{align}
 
-The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy.
+The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy. Note that the modularity maximization algorithm would not be able to produce such a partition but put all nodes in a single cluster.
 
 ## Information theoretic coclustering
 
