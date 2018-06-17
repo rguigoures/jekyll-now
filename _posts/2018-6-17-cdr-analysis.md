@@ -35,19 +35,17 @@ $$
 Imagine we want to partition rows and columns into 2 clusters, i.e 4 blocks in the matrix. Grouping cells 1 and 2, as well as cells 3 and 4 produces the best partition. Indeed, both cells 1 and 2 are linked to 3 and 4, and in the same proportions. Conversely, grouping 1 and 3, and 2 and 4 produces the worst partition.
 The best partition is called \\(C_B\\) and the worst partition \\(C_W\\).
 
-\begin{equation}
-\begin{split}
+$$
 C_B = \begin{pmatrix}
 0 & 6 \\
 6 & 0
 \end{pmatrix}
-&
+\mbox{ ; }
 C_W = \begin{pmatrix}
 3 & 3 \\
 3 & 3
 \end{pmatrix}
-\end{equation}
-\end{split}
+$$
 
 ## Information theoretic coclustering
 
