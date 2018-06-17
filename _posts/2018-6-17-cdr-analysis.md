@@ -78,6 +78,8 @@ After running the algorithm, we can observe the underlying structure of the data
 
 ## Information theoretic coclustering
 
+One great advantage of mutual information maximization lies in being able to tackle bipartite graphs: it is possible to simultaneously cluster cells and countries.
+
 # Bayesian blockmodeling
 
 # Latent representation of the cells
