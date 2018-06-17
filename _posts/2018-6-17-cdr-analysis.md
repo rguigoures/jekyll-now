@@ -23,7 +23,7 @@ While modularity maximization aims at grouping cells being densely connected, in
 Let's define \\(A\\) the adjacency matrix of size n (number of cells) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(C\\). Let's denote \\(P\\) the joint probability matrix corresponding to the matrix \\(C\\). The mutual information (MI) is defined as follows:
 
 $$
-MI(P) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{ij} * \log \left( \dfrac{P{ij}}{P_i P_j} \right)
+MI(P) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{ij} * \log \left( \dfrac{P_{ij}}{P_i P_j} \right)
 $$
 
 Let's use a simple example to illustrate the behavior of the mutual information:
@@ -37,7 +37,7 @@ $$ A = \begin{pmatrix}
 $$
 
 Imagine we want to partition rows and columns into 2 clusters, i.e 4 blocks in the matrix. Grouping cells 1 and 2, as well as cells 3 and 4 produces the best partition. Indeed, both cells 1 and 2 are linked to 3 and 4, and in the same proportions. Conversely, grouping 1 and 3, as well as 2 and 4 produces the worst partition.
-The best partition is called \\(C_B\\) and the worst partition \\(C_W\\).
+The best partition is called \\(C_B\\) and the worst partition \\(C_W\\) (with respective joint probability matrices \\(P_B\\) and \\(P_W\\)).
 
 $$
 C_B = \begin{pmatrix}
@@ -49,6 +49,10 @@ C_W = \begin{pmatrix}
 3 & 3 \\
 3 & 3
 \end{pmatrix}
+$$
+
+$$
+MI(P_B) = log(2) \mbox{ ; } MI(P_B) = 0
 $$
 
 ## Information theoretic coclustering
