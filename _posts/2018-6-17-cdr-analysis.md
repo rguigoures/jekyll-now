@@ -52,7 +52,7 @@ C_W = \begin{pmatrix}
 $$
 
 $$
-MI(P_B) = log(2) \mbox{ ; } MI(P_B) = 0
+MI(P_B) = \log(2) \mbox{ ;    } MI(P_B) = 0
 $$
 
 ## Information theoretic coclustering
