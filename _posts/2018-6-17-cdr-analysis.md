@@ -12,6 +12,16 @@ The CDR is pretty rich in information. Our analysis is based on the sms traffic.
 
 # Information theoretic clustering
 
+This section exploits information theory concept to partition the CDRs. The first analysis performs a clustering of the cell identifier while the seconds performs a coclustering, i.e a simultaneous clustering of cell identifier and countries.   
+
+## Information theoretic clustering
+
+While modularity maximization aims at grouping cells being densely connected, information theoretic clustering groups cells having a similar distribution of sms over other cells. Concretely, modularity tracks clicks and information theoretic clustering captures hubs and peripheral cells. The following image illustrates the difference in the structures tracked by both approaches.
+
+[<img src="{{ site.baseurl }}/images/modularity_example.jpg" alt="clustering obtained by modularity maximization" style="width: 400px;"/>]
+
+## Information theoretic coclustering
+
 # Bayesian blockmodeling
 
 # Latent representation of the cells
