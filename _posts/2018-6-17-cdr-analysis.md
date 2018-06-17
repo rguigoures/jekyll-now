@@ -55,6 +55,8 @@ $$
 MI(P_B) = \log(2) \mbox{ ;    } MI(P_B) = 0
 $$
 
+The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy.
+
 ## Information theoretic coclustering
 
 # Bayesian blockmodeling
