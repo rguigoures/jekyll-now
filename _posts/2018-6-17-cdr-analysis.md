@@ -18,7 +18,7 @@ This section exploits information theory concept to partition the CDRs. The firs
 
 While modularity maximization aims at grouping cells being densely connected, information theoretic clustering groups cells having a similar distribution of sms over other cells. Concretely, modularity tracks clicks and information theoretic clustering captures hubs and peripheral cells. The following image illustrates the difference in the structures tracked by both approaches.
 
-{% include image.html url="https://rguigoures.github.io/images/modularity_example.png" =100x description="Clustering obtained by modularity maximization" %} {% include image.html url="https://rguigoures.github.io/images/itc_example.png" =100x description="Clustering obtained by information theoretic clustering" %}
+{% include image.html url="https://rguigoures.github.io/images/modularity_example.png" width=100 description="Clustering obtained by modularity maximization" %} {% include image.html url="https://rguigoures.github.io/images/itc_example.png" width=100 description="Clustering obtained by information theoretic clustering" %}
 
 
 ## Information theoretic coclustering
