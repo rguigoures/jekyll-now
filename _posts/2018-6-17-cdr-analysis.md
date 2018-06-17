@@ -20,7 +20,7 @@ While modularity maximization aims at grouping cells being densely connected, in
 
 {% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
-Let's define \\(A\\) the adjacency matrix of size n (number of cells) and $P$ the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(C\\). 
+Let's define \\(A\\) the adjacency matrix of size n (number of cells) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(C\\). 
 
 Let's use a simple example to illustrate the behavior of the mutual information:
 
