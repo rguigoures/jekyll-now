@@ -68,11 +68,13 @@ Let's apply the mutual information maximization algorithm to the call detail rec
 
 First, let's plot the two matrices for randomly initialized clusters.
 
-{% include image.html url="https://rguigoures.github.io/images/density_mi_random.png" width=700 description="Fig.2 - Random partition of the CDR. Joint probability matrix (left) and mutual information matrix (right)" %}
+{% include image.html url="https://rguigoures.github.io/images/density_mi_random.png" width=500 description="Fig.2 - Random partition of the CDR. Joint probability matrix (left) and mutual information matrix (right)" %}
 
-Finally, we run the algorithm and plot the same matrices for the obtained partitions.
+We can see on Figure 2 that the density is similarly distributed in the cell of the matrix. The mutual information also indicates that the density in the cells is close to the expected value in case of random clustering. In other words, \\(P_{ij} \simeq P_i P_j\\). Then, we run the algorithm and plot the same matrices for the obtained partitions.
 
-{% include image.html url="https://rguigoures.github.io/images/density_mi_cluster.png" width=700 description="Fig.3 - Partition of the CDR obtained by maximization of the mutual information. Joint probability matrix (left) and mutual information matrix (right)" %}
+{% include image.html url="https://rguigoures.github.io/images/density_mi_cluster.png" width=500 description="Fig.3 - Partition of the CDR obtained by maximization of the mutual information. Joint probability matrix (left) and mutual information matrix (right)" %}
+
+After running the algorithm, we can observe the underlying structure of the data emerging. The joint probability shows cells with high density. But this observation does not mean that the partition is meaningful. Indeed if the clusters are unbalanced, bigger clusters are likely to have high density between themselves. In the mutual information matrix, red cells represent excess of cooccurrences. Conversely, blue cells respresent lacks of cooccurences. The clusters can then be interpreted as follow: cells in cluster 4 are grouped together because they excessively interract with themselves and less than expected with clusters 0 and 1. Note that the connections between clusters 0 (or 1) and 4 have quite high density but less than expected.  
 
 ## Information theoretic coclustering
 
