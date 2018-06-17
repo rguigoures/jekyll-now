@@ -72,7 +72,7 @@ First, let's plot the two matrices for randomly initialized clusters.
 
 Finally, we run the algorithm and plot the same matrices for the obtained partitions.
 
-{% include image.html url="https://rguigoures.github.io/images/density_mi_clusters.png" width=700 description="Fig.3 - Partition of the CDR obtained by maximization of the mutual information. Joint probability matrix (left) and mutual information matrix (right)" %}
+{% include image.html url="https://rguigoures.github.io/images/density_mi_cluster.png" width=700 description="Fig.3 - Partition of the CDR obtained by maximization of the mutual information. Joint probability matrix (left) and mutual information matrix (right)" %}
 
 ## Information theoretic coclustering
 
