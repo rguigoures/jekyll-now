@@ -5,7 +5,7 @@ title: How to evaluate percentages?
 
 Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the french population. It appeared that 64% of surveyed people declared they planned to watch the games.
 
-{% include image.html url="https://rguigoures.github.io/images/french_rooster.jpg" width=300 %}
+{% include image.html url="https://rguigoures.github.io/images/french_rooster.jpg" width=350 %}
 
 This percentage has an error estimation attached to it and the bigger the error the less likely the percentage to be accurate. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
 
