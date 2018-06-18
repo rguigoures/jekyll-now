@@ -1,8 +1,11 @@
-
-# How to evaluate percentages?
+---
+layout: post
+title: Analysis of a Call Detail record
+---
 
 Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the french population. It appeared that 64% of surveyed people declared they planned to watch the games.
-<img src="img/french_rooster.jpg" alt="Frenchy" style="width: 200px;"/>
+
+{% include image.html url="https://rguigoures.github.io/images/french_rooster.jpg" width=300 %}
 
 This percentage has an error estimation attached to it and the bigger the error the less likely the percentage to be accurate. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
 
@@ -12,7 +15,7 @@ _Allez les bleus !!!_
 The percentage of people planning to watch the football games is defined as the number of people planning to watch the games divided by the number of surveyed people.
 
 
-```python
+{% highlight python %}
 def rate(number_of_people_watching_games, number_of_surveyed_persons):
     return round(100.* number_of_people_watching_games / number_of_surveyed_persons, 2)
 
@@ -24,7 +27,7 @@ print("If {0} persons plan to watch the football games "
       .format(number_of_people_watching_games, 
               number_of_surveyed_persons, 
               rate(number_of_people_watching_games, number_of_surveyed_persons)))
-```
+{% endhighlight %}
 
     If 640 persons plan to watch the footbalL games over 1000 surveyed persons, then the percentage is 64.0%
 
