@@ -356,8 +356,10 @@ plt.show()
 
 {% highlight python %}
 for i,x in enumerate(X):
-    print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
+    print("For {0} surveyed persons, the percentage of persons watching the 
+           games is {1} (± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
+
 {% highlight html %}
 For 2 surveyed persons, the percentage of persons watching the games 
 is 64.0 (± 66.5)%
@@ -430,7 +432,7 @@ Yes, in a similar way to how we do it for the proportions:
 
 $$e = z \displaystyle\sqrt{\dfrac{p_1(1-p_1)}{n_1} + \dfrac{p_2(1-p_2)}{n_2}}$$
 
-where \\(p_1\\() and \\(p_2\\) are the percentages and \\(n_1\\) and \\(n_2\\) the number of surveyed persons, of respectively the first and the second month.
+where \\(p_1\\) and \\(p_2\\) are the percentages and \\(n_1\\) and \\(n_2\\) the number of surveyed persons, of respectively the first and the second month.
 
 
 {% highlight python %}
