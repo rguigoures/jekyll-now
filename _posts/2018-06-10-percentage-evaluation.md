@@ -211,8 +211,8 @@ print("For 100 surveyed persons, the probability that 64 of them plan to watch
        .format(round(100*L, 2)))
 
 L = binom.pmf(n=10000, k=6400, p=0.64)
-print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch 
-       the game, if the expected percentage is 64%, is equal to {}%"
+print("For 10,000 surveyed persons, the probability that 6,400 of them plan to 
+watch the game, if the expected percentage is 64%, is equal to {}%"
        .format(round(100*L, 2)))
 {% endhighlight %}
 
@@ -235,8 +235,8 @@ print("The probability to randomly find 64 persons planning to watch the games
        over 100 surveyed people is {}%".format(round(100*L, 2)))
 
 L = 1/10000.
-print("The probability to randomly find 6,400 persons planning to watch the games 
-       over 10,000 surveyed people is {}%".format(round(100*L, 2)))
+print("The probability to randomly find 6,400 persons planning to watch the 
+games over 10,000 surveyed people is {}%".format(round(100*L, 2)))
 {% endhighlight %}
 {% highlight html %}
 The probability to randomly find 64 persons planning to watch the games over 
@@ -270,7 +270,8 @@ L=0
 for k in range(1,1000):
     L += binom.pmf(n=1000, k=k, p=0.64)
     if L>0.025:
-        print "Lower bound of the 95% confidence interval is when we hit k={}".format(k)
+        print("Lower bound of the 95% confidence interval is when we hit k={}"
+              .format(k))
         break
 {% endhighlight %}
 {% highlight html %}
@@ -279,15 +280,22 @@ Lower bound of the 95% confidence interval is when we hit k=610
 
 Now we have found the lower bound of the confidence interval, let's do the same for computing the upper bound:
 
-$$P(k=1000 \mid n=1000, p=0.6)+P(k=999 \mid n=1000, p=0.6)+...+P(k=x_U \mid n=1000, p=0.6) = 2.5\%$$
-
+$$
+\begin{align}
+&P(k=1000 \mid n=1000, p=0.64)\\
++&P(k=999 \mid n=1000, p=0.64)\\
++&... \\
++&P(k=x_U \mid n=1000, p=0.64) = 2.5\%
+\end{align}
+$$
 
 {% highlight python %}
 L=0
 for k in range(0,1000):
     L += binom.pmf(n=1000, k=1000-k, p=0.64)
     if L>0.025:
-        print "Upper bound of the 95% confidence interval is when we hit k={}".format(1000-k)
+        print("Upper bound of the 95% confidence interval is when we hit k={}"
+              .format(1000-k))
         break
 {% endhighlight %}
 {% highlight html %}
@@ -313,7 +321,8 @@ def compute_confidence_interval(p, n, precision):
     zscore = abs(norm.ppf((1-precision)/2.))
     return zscore*math.sqrt(p*(1-p)/n)
 
-print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95), 2)))
+print("Error rate is: {}"
+      .format(round(100*compute_confidence_interval(0.64, 100, 0.95), 2)))
 {% endhighlight %}
 {% highlight html %}
 Error rate is: 9.41
@@ -332,7 +341,7 @@ X,Y,Yerr = [],[],[]
 for nr_people_in_the_room in nr_people_in_the_room_list:
     X.append(nr_people_in_the_room)
     Y.append(64)
-    Yerr.append(compute_confidence_interval(.64, nr_people_in_the_room, 0.95)*100)
+    Yerr.append(compute_confidence_interval(.64,nr_people_in_the_room,0.95)*100)
 plt.clf()
 fig, ax = plt.subplots()
 ax.set_xscale('log', basex=2)
@@ -350,21 +359,36 @@ for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
 {% highlight html %}
-For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
-For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
-For 8 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 33.3)%
-For 16 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 23.5)%
-For 32 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 16.6)%
-For 64 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 11.8)%
-For 128 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 8.3)%
-For 256 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 5.9)%
-For 512 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 4.2)%
-For 1024 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 2.9)%
-For 2048 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 2.1)%
-For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.5)%
-For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.0)%
-For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
-For 32768 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
+For 2 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 66.5)%
+For 4 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 47.0)%
+For 8 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 33.3)%
+For 16 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 23.5)%
+For 32 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 16.6)%
+For 64 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 11.8)%
+For 128 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 8.3)%
+For 256 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 5.9)%
+For 512 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 4.2)%
+For 1024 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 2.9)%
+For 2048 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 2.1)%
+For 4096 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 1.5)%
+For 8192 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 1.0)%
+For 16384 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 0.7)%
+For 32768 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 0.5)%
 {% endhighlight %}
 
 ### Comparing two proportions
@@ -381,11 +405,17 @@ satisfaction_rate_in_may = 0.45
 satisfaction_rate_in_june = 0.43
 nr_surveyed_persons = 1000
 
-confidence_may = compute_confidence_interval(satisfaction_rate_in_may, nr_surveyed_persons, precision=0.95)
-confidence_june = compute_confidence_interval(satisfaction_rate_in_june, nr_surveyed_persons, precision=0.95)
+confidence_may = compute_confidence_interval(satisfaction_rate_in_may, 
+                                             nr_surveyed_persons, 
+                                             precision=0.95)
+confidence_june = compute_confidence_interval(satisfaction_rate_in_june, 
+                                             nr_surveyed_persons, 
+                                             precision=0.95)
 
-print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
-print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
+print("The satisfaction rate in May is {0} (±{1})%"
+      .format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
+print("The satisfaction rate in June is {0} (±{1})%"
+      .format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
 {% endhighlight %}
 {% highlight html %}
 The satisfaction rate in May is 45.0 (±3.0)%
@@ -412,13 +442,14 @@ satisfaction_rate_in_may = 0.45
 satisfaction_rate_in_june = 0.43
 nr_surveyed_persons = 1000
 
-confidence_difference_may_june = compute_difference_confidence_interval(satisfaction_rate_in_may, 
-                                                                        nr_surveyed_persons, 
-                                                                        satisfaction_rate_in_june, 
-                                                                        nr_surveyed_persons, 
-                                                                        precision=.95)
+confidence_difference_may_june = \
+compute_difference_confidence_interval(satisfaction_rate_in_may, 
+                                       nr_surveyed_persons, 
+                                       satisfaction_rate_in_june, 
+                                       nr_surveyed_persons, 
+                                       precision=.95)
 
-print("We observe between May and June a decrease of {0} (Â±{1}) pp of the satisfaction rate"
+print("We observe between May and June a decrease of {0} (±{1}) pp of the satisfaction rate"
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
