@@ -29,7 +29,7 @@ print("If {0} persons plan to watch the football games "
               rate(nr_people_watching_games, nr_surveyed_persons)))
 {% endhighlight %}
 
-{% highlight bash %}
+{% highlight html %}
 If 640 persons plan to watch the football games over 1000 surveyed persons, 
 then the percentage is 64.0%
 {% endhighlight %}
@@ -82,7 +82,7 @@ print("{0}% of surveyed persons plan to watch the games."
       .format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
 {% endhighlight %}
 
-{% highlight bash %}
+{% highlight html %}
 70.0% of surveyed persons plan to watch the games.
 {% endhighlight %}
 
@@ -158,7 +158,7 @@ for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the 
            games is {1} (± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 For 2 surveyed persons, the percentage of persons watching the games 
 is 40.0 (± 60.0)%
 For 4 surveyed persons, the percentage of persons watching the games 
@@ -206,20 +206,22 @@ The binomial estimator considers the problem the opposite way: how likely it is 
 from scipy.stats import binom
 
 L = binom.pmf(n=100, k=64, p=0.64)
-print("For 100 surveyed persons, the probability that 64 of them plan to watch the game, 
-if the expected percentage is 64%, is equal to {}% \n".format(round(100*L, 2)))
+print("For 100 surveyed persons, the probability that 64 of them plan to watch 
+       the game, if the expected percentage is 64%, is equal to {}% \n"
+       .format(round(100*L, 2)))
 
 L = binom.pmf(n=10000, k=6400, p=0.64)
-print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, 
-if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
+print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch 
+       the game, if the expected percentage is 64%, is equal to {}%"
+       .format(round(100*L, 2)))
 {% endhighlight %}
 
-{% highlight bash %}
-For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29% 
-{% endhighlight %}
-    
-{% highlight bash %}
-For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
+{% highlight html %}
+For 100 surveyed persons, the probability that 64 of them plan to watch the 
+game, if the expected percentage is 64%, is equal to 8.29% 
+
+For 10,000 surveyed persons, the probability that 6,400 of them plan to watch 
+the game, if the expected percentage is 64%, is equal to 0.83%
 {% endhighlight %}
 
 This is quite counterintuitive: the more there are observations, the less it is reliable.
@@ -229,27 +231,38 @@ But it is also more likely to find randomly 64 persons planning to watch the gam
 
 {% highlight python %}
 L = 1/100.
-print("The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is {}%".format(round(100*L, 2)))
+print("The probability to randomly find 64 persons planning to watch the games 
+       over 100 surveyed people is {}%".format(round(100*L, 2)))
 
 L = 1/10000.
-print("The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is {}%".format(round(100*L, 2)))
+print("The probability to randomly find 6,400 persons planning to watch the games 
+       over 10,000 surveyed people is {}%".format(round(100*L, 2)))
 {% endhighlight %}
-{% highlight bash %}
-The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%
-The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%
+{% highlight html %}
+The probability to randomly find 64 persons planning to watch the games over 
+100 surveyed people is 1.0%
+The probability to randomly find 6,400 persons planning to watch the games over 
+10,000 surveyed people is 0.01%
 {% endhighlight %}
 
 **Question**: How to derive the confidence interval from it?
 
-Let's do some maths! Let's write the binomial estimator as a conditional probability: $P(k \mid n, p)$. 
+Let's do some maths! Let's write the binomial estimator as a conditional probability: \\(P(k \mid n, p)\\). 
 
-**Example**: In the survey published in the news, 1,000 persons were surveyed. Then, $P(k=640 \mid n=1000, p=0.64)$ denotes the probability to find 640 persons planning to watch the games over 1,000 surveyed people knowing that the expected percentage is 64%.
+**Example**: In the survey published in the news, 1,000 persons were surveyed. Then, \\(P(k=640 \mid n=1000, p=0.64)\\) denotes the probability to find 640 persons planning to watch the games over 1,000 surveyed people knowing that the expected percentage is 64%.
 
 Let's suppose that we want to have a confidence interval with a 95% precision, that is an error rate of 5%.
 
 We can then iterate over k from 1 and sum $P(k \mid n, p)$, until we hit half of the error rate, i.e 2.5%:
 
-$$P(k=1 \mid n=1000, p=0.64)+P(k=2 \mid n=1000, p=0.64)+...+P(k=x_L \mid n=1000, p=0.64) = 2.5\%$$
+$$
+\begin{align}
+&P(k=1 \mid n=1000, p=0.64)\\
++&P(k=2 \mid n=1000, p=0.64)\\
++&... \\
++&P(k=x_L \mid n=1000, p=0.64) = 2.5\%
+\end{align}
+$$
 
 
 {% highlight python %}
@@ -260,7 +273,7 @@ for k in range(1,1000):
         print "Lower bound of the 95% confidence interval is when we hit k={}".format(k)
         break
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 Lower bound of the 95% confidence interval is when we hit k=610
 {% endhighlight %}
 
@@ -277,7 +290,7 @@ for k in range(0,1000):
         print "Upper bound of the 95% confidence interval is when we hit k={}".format(1000-k)
         break
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 Upper bound of the 95% confidence interval is when we hit k=670
 {% endhighlight %}
 
@@ -302,7 +315,7 @@ def compute_confidence_interval(p, n, precision):
 
 print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95), 2)))
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 Error rate is: 9.41
 {% endhighlight %}
 
@@ -336,7 +349,7 @@ plt.show()
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
 For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
 For 8 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 33.3)%
@@ -374,7 +387,7 @@ confidence_june = compute_confidence_interval(satisfaction_rate_in_june, nr_surv
 print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
 print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 The satisfaction rate in May is 45.0 (±3.0)%
 The satisfaction rate in June is 43.0 (±3.0)%
 {% endhighlight %}
@@ -409,7 +422,7 @@ print("We observe between May and June a decrease of {0} (Â±{1}) pp of the sat
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
-{% highlight bash %}
+{% highlight html %}
 We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
 {% endhighlight %}
 
