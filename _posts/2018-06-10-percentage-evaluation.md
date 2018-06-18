@@ -443,13 +443,14 @@ satisfaction_rate_in_june = 0.43
 nr_surveyed_persons = 1000
 
 confidence_difference_may_june = \
-compute_difference_confidence_interval(satisfaction_rate_in_may, 
-                                       nr_surveyed_persons, 
-                                       satisfaction_rate_in_june, 
-                                       nr_surveyed_persons, 
-                                       precision=.95)
+    compute_difference_confidence_interval(satisfaction_rate_in_may, 
+                                           nr_surveyed_persons, 
+                                           satisfaction_rate_in_june, 
+                                           nr_surveyed_persons, 
+                                           precision=.95)
 
-print("We observe between May and June a decrease of {0} (±{1}) pp of the satisfaction rate"
+print("We observe between May and June a decrease of {0} (±{1}) pp of the 
+       satisfaction rate"
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
