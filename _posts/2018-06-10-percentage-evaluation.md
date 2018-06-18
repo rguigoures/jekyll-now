@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to evaluate percentages?
+title: Tutorial - How to evaluate percentages?
 ---
 
 Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the french population. It appeared that 64% of surveyed people declared they planned to watch the games.
@@ -430,7 +430,7 @@ Yes, in a similar way to how we do it for the proportions:
 
 $$e = z \displaystyle\sqrt{\dfrac{p_1(1-p_1)}{n_1} + \dfrac{p_2(1-p_2)}{n_2}}$$
 
-where $p_1$ and $p_2$ are the percentages and $n_1$ and $n_2$ the number of surveyed persons, of respectively the first and the second month.
+where \\(p_1\\() and \\(p_2\\) are the percentages and \\(n_1\\) and \\(n_2\\) the number of surveyed persons, of respectively the first and the second month.
 
 
 {% highlight python %}
@@ -454,7 +454,7 @@ print("We observe between May and June a decrease of {0} (±{1}) pp of the satis
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
 {% highlight html %}
-We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
+We observe between May and June a decrease of 2.0 (±4.0) pp of the satisfaction rate
 {% endhighlight %}
 
 This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
