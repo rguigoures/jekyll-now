@@ -29,8 +29,9 @@ print("If {0} persons plan to watch the football games "
               rate(number_of_people_watching_games, number_of_surveyed_persons)))
 {% endhighlight %}
 
-    If 640 persons plan to watch the footbalL games over 1000 surveyed persons, then the percentage is 64.0%
-
+````
+If 640 persons plan to watch the footbalL games over 1000 surveyed persons, then the percentage is 64.0%
+````
 
 #### Problem
 What if only 10 persons would have been surveyed? Would you feel confident generalizing to the rest of the population of the country?
@@ -77,8 +78,9 @@ def pick_many_times(people_in_the_room, number_people_in_the_room):
 print("{0}% of surveyed persons plan to watch the games.".format(pick_many_times(people_in_the_room, number_people_in_the_room)))
 {% endhighlight %}
 
-    70.0% of surveyed persons plan to watch the games.
-
+````
+70.0% of surveyed persons plan to watch the games.
+````
 
 We can observe that for a sample of only 10 persons, the percentage is very unreliable. Conversely if we increase the sample size, the estimation of the percentage is more accurate. 
 
@@ -147,23 +149,23 @@ plt.show()
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-
-    For 2 surveyed persons, the percentage of persons watching the games is 40.0 (Â± 60.0)%
-    For 4 surveyed persons, the percentage of persons watching the games is 47.5 (Â± 56.8)%
-    For 8 surveyed persons, the percentage of persons watching the games is 52.5 (Â± 36.7)%
-    For 16 surveyed persons, the percentage of persons watching the games is 56.3 (Â± 26.8)%
-    For 32 surveyed persons, the percentage of persons watching the games is 62.8 (Â± 20.6)%
-    For 64 surveyed persons, the percentage of persons watching the games is 63.4 (Â± 9.6)%
-    For 128 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 6.0)%
-    For 256 surveyed persons, the percentage of persons watching the games is 61.1 (Â± 4.9)%
-    For 512 surveyed persons, the percentage of persons watching the games is 63.5 (Â± 2.2)%
-    For 1024 surveyed persons, the percentage of persons watching the games is 63.0 (Â± 3.7)%
-    For 2048 surveyed persons, the percentage of persons watching the games is 63.7 (Â± 1.9)%
-    For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.3)%
-    For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
-    For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
-    For 32768 surveyed persons, the percentage of persons watching the games is 64.1 (Â± 0.5)%
-
+````
+For 2 surveyed persons, the percentage of persons watching the games is 40.0 (Â± 60.0)%
+For 4 surveyed persons, the percentage of persons watching the games is 47.5 (Â± 56.8)%
+For 8 surveyed persons, the percentage of persons watching the games is 52.5 (Â± 36.7)%
+For 16 surveyed persons, the percentage of persons watching the games is 56.3 (Â± 26.8)%
+For 32 surveyed persons, the percentage of persons watching the games is 62.8 (Â± 20.6)%
+For 64 surveyed persons, the percentage of persons watching the games is 63.4 (Â± 9.6)%
+For 128 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 6.0)%
+For 256 surveyed persons, the percentage of persons watching the games is 61.1 (Â± 4.9)%
+For 512 surveyed persons, the percentage of persons watching the games is 63.5 (Â± 2.2)%
+For 1024 surveyed persons, the percentage of persons watching the games is 63.0 (Â± 3.7)%
+For 2048 surveyed persons, the percentage of persons watching the games is 63.7 (Â± 1.9)%
+For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.3)%
+For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
+For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
+For 32768 surveyed persons, the percentage of persons watching the games is 64.1 (Â± 0.5)%
+````
 
 ### The binomial confidence interval
 
@@ -186,10 +188,13 @@ L = binom.pmf(n=10000, k=6400, p=0.64)
 print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
 {% endhighlight %}
 
-    For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29% 
+````
+For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29% 
+````
     
-    For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
-
+````
+For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
+````
 
 This is quite counterintuitive: the more there are observations, the less it is reliable.
 
@@ -203,10 +208,10 @@ print("The probability to randomly find 64 persons planning to watch the games o
 L = 1/10000.
 print("The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is {}%".format(round(100*L, 2)))
 {% endhighlight %}
-
-    The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%
-    The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%
-
+````
+The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%
+The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%
+````
 
 **Question**: How to derive the confidence interval from it?
 
@@ -229,9 +234,9 @@ for k in range(1,1000):
         print "Lower bound of the 95% confidence interval is when we hit k={}".format(k)
         break
 {% endhighlight %}
-
-    Lower bound of the 95% confidence interval is when we hit k=610
-
+````
+Lower bound of the 95% confidence interval is when we hit k=610
+````
 
 Now we have found the lower bound of the confidence interval, let's do the same for computing the upper bound:
 
@@ -246,11 +251,11 @@ for k in range(0,1000):
         print "Upper bound of the 95% confidence interval is when we hit k={}".format(1000-k)
         break
 {% endhighlight %}
+````
+Upper bound of the 95% confidence interval is when we hit k=670
+````
 
-    Upper bound of the 95% confidence interval is when we hit k=670
-
-
-**Conclusion**: For 1,000 surveyed persons, the percentage to find 640 persons pretending planning watching the games  is equal to 64 (Â± 3)%, with a 95% precision. 
+**Conclusion**: For 1,000 surveyed persons, the percentage to find 640 persons pretending planning watching the games  is equal to 64 (± 3)%, with a 95% precision. 
 
 **Question**: Is there a way to compute it directly?
 
@@ -258,7 +263,7 @@ Yes. There is also a way to estimate that value:
 
 $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 
-where $p$ is the percentage, $n$ is the number of samples and z is the z score, constant value depending on the required precision.
+where \\(p\\) is the percentage, $n$ is the number of samples and z is the z score, constant value depending on the required precision.
 
 
 {% highlight python %}
@@ -269,11 +274,11 @@ def compute_confidence_interval(p, n, precision):
     zscore = abs(norm.ppf((1-precision)/2.))
     return zscore*math.sqrt(p*(1-p)/n)
 
-print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95),2)))
+print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95), 2)))
 {% endhighlight %}
-
-    Error rate is: 9.41
-
+````
+Error rate is: 9.41
+````
 
 Now let's plot the same chart as we did for bootstrapping. And note that we obtain similar confidence intervals.
 
@@ -306,23 +311,23 @@ plt.show()
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-
-    For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
-    For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
-    For 8 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 33.3)%
-    For 16 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 23.5)%
-    For 32 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 16.6)%
-    For 64 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 11.8)%
-    For 128 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 8.3)%
-    For 256 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 5.9)%
-    For 512 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 4.2)%
-    For 1024 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 2.9)%
-    For 2048 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 2.1)%
-    For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.5)%
-    For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.0)%
-    For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
-    For 32768 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
-
+````
+For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
+For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
+For 8 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 33.3)%
+For 16 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 23.5)%
+For 32 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 16.6)%
+For 64 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 11.8)%
+For 128 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 8.3)%
+For 256 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 5.9)%
+For 512 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 4.2)%
+For 1024 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 2.9)%
+For 2048 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 2.1)%
+For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.5)%
+For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.0)%
+For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
+For 32768 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
+````
 
 ### Comparing two proportions
 
@@ -344,10 +349,10 @@ confidence_june = compute_confidence_interval(satisfaction_rate_in_june, number_
 print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
 print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
 {% endhighlight %}
-
-    The satisfaction rate in May is 45.0 (Â±3.0)%
-    The satisfaction rate in June is 43.0 (Â±3.0)%
-
+````
+The satisfaction rate in May is 45.0 (Â±3.0)%
+The satisfaction rate in June is 43.0 (Â±3.0)%
+````
 
 In this case, we observe a decrease of 3pp of the satisfaction rate between May and June. The confidence intervals overlap but this is not enough to draw any conclusion.
 
