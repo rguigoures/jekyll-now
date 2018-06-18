@@ -29,7 +29,7 @@ print("If {0} persons plan to watch the football games "
               rate(nr_people_watching_games, nr_surveyed_persons)))
 {% endhighlight %}
 
-{% highlight %}
+{% highlight bash %}
 If 640 persons plan to watch the football games over 1000 surveyed persons, 
 then the percentage is 64.0%
 {% endhighlight %}
@@ -82,7 +82,7 @@ print("{0}% of surveyed persons plan to watch the games."
       .format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
 {% endhighlight %}
 
-{% highlight %}
+{% highlight bash %}
 70.0% of surveyed persons plan to watch the games.
 {% endhighlight %}
 
@@ -158,7 +158,7 @@ for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the 
            games is {1} (± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 For 2 surveyed persons, the percentage of persons watching the games 
 is 40.0 (± 60.0)%
 For 4 surveyed persons, the percentage of persons watching the games 
@@ -214,11 +214,11 @@ print("For 10,000 surveyed persons, the probability that 6,400 of them plan to w
 if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
 {% endhighlight %}
 
-{% highlight %}
+{% highlight bash %}
 For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29% 
 {% endhighlight %}
     
-{% highlight %}
+{% highlight bash %}
 For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
 {% endhighlight %}
 
@@ -234,7 +234,7 @@ print("The probability to randomly find 64 persons planning to watch the games o
 L = 1/10000.
 print("The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is {}%".format(round(100*L, 2)))
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%
 The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%
 {% endhighlight %}
@@ -260,7 +260,7 @@ for k in range(1,1000):
         print "Lower bound of the 95% confidence interval is when we hit k={}".format(k)
         break
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 Lower bound of the 95% confidence interval is when we hit k=610
 {% endhighlight %}
 
@@ -277,7 +277,7 @@ for k in range(0,1000):
         print "Upper bound of the 95% confidence interval is when we hit k={}".format(1000-k)
         break
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 Upper bound of the 95% confidence interval is when we hit k=670
 {% endhighlight %}
 
@@ -302,7 +302,7 @@ def compute_confidence_interval(p, n, precision):
 
 print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95), 2)))
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 Error rate is: 9.41
 {% endhighlight %}
 
@@ -336,7 +336,7 @@ plt.show()
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
 For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
 For 8 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 33.3)%
@@ -374,7 +374,7 @@ confidence_june = compute_confidence_interval(satisfaction_rate_in_june, nr_surv
 print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
 print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 The satisfaction rate in May is 45.0 (±3.0)%
 The satisfaction rate in June is 43.0 (±3.0)%
 {% endhighlight %}
@@ -409,7 +409,7 @@ print("We observe between May and June a decrease of {0} (Â±{1}) pp of the sat
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
-{% highlight %}
+{% highlight bash %}
 We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
 {% endhighlight %}
 
