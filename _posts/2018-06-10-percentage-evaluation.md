@@ -451,7 +451,7 @@ confidence_difference_may_june = \
 
 print("We observe between May and June a decrease of {0} (±{1}) pp of the 
        satisfaction rate"
-      .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
+      .format(round(100*(satisfaction_rate_in_may-satisfaction_rate_in_june)), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
 {% highlight html %}
