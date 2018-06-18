@@ -155,24 +155,40 @@ plt.show()
 
 {% highlight python %}
 for i,x in enumerate(X):
-    print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
+    print("For {0} surveyed persons, the percentage of persons watching the 
+           games is {1} (± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
 {% highlight %}
-For 2 surveyed persons, the percentage of persons watching the games is 40.0 (Â± 60.0)%
-For 4 surveyed persons, the percentage of persons watching the games is 47.5 (Â± 56.8)%
-For 8 surveyed persons, the percentage of persons watching the games is 52.5 (Â± 36.7)%
-For 16 surveyed persons, the percentage of persons watching the games is 56.3 (Â± 26.8)%
-For 32 surveyed persons, the percentage of persons watching the games is 62.8 (Â± 20.6)%
-For 64 surveyed persons, the percentage of persons watching the games is 63.4 (Â± 9.6)%
-For 128 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 6.0)%
-For 256 surveyed persons, the percentage of persons watching the games is 61.1 (Â± 4.9)%
-For 512 surveyed persons, the percentage of persons watching the games is 63.5 (Â± 2.2)%
-For 1024 surveyed persons, the percentage of persons watching the games is 63.0 (Â± 3.7)%
-For 2048 surveyed persons, the percentage of persons watching the games is 63.7 (Â± 1.9)%
-For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.3)%
-For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
-For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
-For 32768 surveyed persons, the percentage of persons watching the games is 64.1 (Â± 0.5)%
+For 2 surveyed persons, the percentage of persons watching the games 
+is 40.0 (± 60.0)%
+For 4 surveyed persons, the percentage of persons watching the games 
+is 47.5 (± 56.8)%
+For 8 surveyed persons, the percentage of persons watching the games 
+is 52.5 (± 36.7)%
+For 16 surveyed persons, the percentage of persons watching the games 
+is 56.3 (± 26.8)%
+For 32 surveyed persons, the percentage of persons watching the games 
+is 62.8 (± 20.6)%
+For 64 surveyed persons, the percentage of persons watching the games 
+is 63.4 (± 9.6)%
+For 128 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 6.0)%
+For 256 surveyed persons, the percentage of persons watching the games 
+is 61.1 (± 4.9)%
+For 512 surveyed persons, the percentage of persons watching the games 
+is 63.5 (± 2.2)%
+For 1024 surveyed persons, the percentage of persons watching the games 
+is 63.0 (± 3.7)%
+For 2048 surveyed persons, the percentage of persons watching the games 
+is 63.7 (± 1.9)%
+For 4096 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 1.3)%
+For 8192 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 0.5)%
+For 16384 surveyed persons, the percentage of persons watching the games 
+is 64.0 (± 0.7)%
+For 32768 surveyed persons, the percentage of persons watching the games 
+is 64.1 (± 0.5)%
 {% endhighlight %}
 
 ### The binomial confidence interval
