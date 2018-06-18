@@ -29,10 +29,11 @@ print("If {0} persons plan to watch the football games "
               rate(nr_people_watching_games, nr_surveyed_persons)))
 {% endhighlight %}
 
-````
+{% highlight python %}
 If 640 persons plan to watch the football games over 1000 surveyed persons, 
 then the percentage is 64.0%
-````
+{% endhighlight %}
+
 
 #### Problem
 What if only 10 persons would have been surveyed? Would you feel confident generalizing to the rest of the population of the country?
