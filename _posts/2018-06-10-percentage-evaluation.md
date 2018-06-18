@@ -212,7 +212,7 @@ print("For 100 surveyed persons, the probability that 64 of them plan to watch
 
 L = binom.pmf(n=10000, k=6400, p=0.64)
 print("For 10,000 surveyed persons, the probability that 6,400 of them plan to 
-watch the game, if the expected percentage is 64%, is equal to {}%"
+       watch the game, if the expected percentage is 64%, is equal to {}%"
        .format(round(100*L, 2)))
 {% endhighlight %}
 
