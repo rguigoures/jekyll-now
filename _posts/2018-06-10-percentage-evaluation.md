@@ -30,7 +30,7 @@ print("If {0} persons plan to watch the football games "
 {% endhighlight %}
 
 ````
-If 640 persons plan to watch the footbalL games over 1000 surveyed persons, 
+If 640 persons plan to watch the football games over 1000 surveyed persons, 
 then the percentage is 64.0%
 ````
 
@@ -60,7 +60,8 @@ import random
 
 nr_people_in_the_room = 10
 nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
-nr_people_not_watching_the_games = nr_people_in_the_room - nr_people_watching_the_games
+nr_people_not_watching_the_games = nr_people_in_the_room - \
+                                   nr_people_watching_the_games
 people_in_the_room = ['watching'] * nr_people_watching_the_games + \
                      ['not watching'] * nr_people_not_watching_the_games
 
@@ -76,7 +77,8 @@ def pick_many_times(people_in_the_room, nr_people_in_the_room):
             nr_people_watching_the_games += 1
     return round(100.*nr_people_watching_the_games / nr_people_in_the_room, 2)
 
-print("{0}% of surveyed persons plan to watch the games.".format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
+print("{0}% of surveyed persons plan to watch the games."
+      .format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
 {% endhighlight %}
 
 ````
@@ -97,10 +99,12 @@ X,Y = [],[]
 for i in range(1000):
     nr_people_in_the_room = random.choice(nr_people_in_the_room_list)
     nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
-    nr_people_not_watching_the_games = nr_people_in_the_room - nr_people_watching_the_games
+    nr_people_not_watching_the_games = nr_people_in_the_room - \
+                                       nr_people_watching_the_games
     people_in_the_room = ['watching'] * nr_people_watching_the_games + \
                          ['not watching'] * nr_people_not_watching_the_games
-    percentage_watching_the_games = pick_many_times(people_in_the_room, nr_people_in_the_room)
+    percentage_watching_the_games = pick_many_times(people_in_the_room, 
+                                                    nr_people_in_the_room)
     X.append(nr_people_in_the_room)
     Y.append(percentage_watching_the_games)
 fig, ax = plt.subplots()
@@ -127,10 +131,12 @@ for nr_people_in_the_room in nr_people_in_the_room_list:
     percentage_people_watching_the_games = []
     for i in range(10):
         nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
-        nr_people_not_watching_the_games = nr_people_in_the_room - nr_people_watching_the_games
+        nr_people_not_watching_the_games = nr_people_in_the_room - \
+                                           nr_people_watching_the_games
         people_in_the_room = ['watching'] * nr_people_watching_the_games + \
                              ['not watching'] * nr_people_not_watching_the_games
-        percentage_people_watching_the_games.append(pick_many_times(people_in_the_room, nr_people_in_the_room))
+        percentage_people_watching_the_games.append(pick_many_times(people_in_the_room, 
+                                                                    nr_people_in_the_room))
     X.append(nr_people_in_the_room)
     Y.append(np.mean(percentage_people_watching_the_games))
     Yerr.append(2*np.std(percentage_people_watching_the_games))
@@ -183,10 +189,12 @@ The binomial estimator considers the problem the opposite way: how likely it is 
 from scipy.stats import binom
 
 L = binom.pmf(n=100, k=64, p=0.64)
-print("For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to {}% \n".format(round(100*L, 2)))
+print("For 100 surveyed persons, the probability that 64 of them plan to watch the game, 
+if the expected percentage is 64%, is equal to {}% \n".format(round(100*L, 2)))
 
 L = binom.pmf(n=10000, k=6400, p=0.64)
-print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
+print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, 
+if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
 {% endhighlight %}
 
 ````
