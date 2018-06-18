@@ -53,7 +53,7 @@ This will give us the percentage of people planning to watch the games.
 Not sure. So we will repeat the process several times to check whether it is reliable or not.
 
 
-{% highlight python %}
+{% highlight python lineno %}
 import random
 
 number_people_in_the_room = 10
