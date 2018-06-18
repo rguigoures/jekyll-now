@@ -108,8 +108,8 @@ ax.plot(X, Y, 'ro')
 plt.show()
 {% endhighlight %}
 
+{% include image.html url="https://rguigoures.github.io/images/bootstrap.png" width=500 %}
 
-![](ProportionsEvaluation_files/ProportionsEvaluation_7_0.png)
 
 
 So, how can we assess the certainty of a calculated percentage? One option consists in computing the average value of the percentages over each trial, and the standard deviation. In the following plot, bars are for 2 standard deviation since we want to get confidence intervals with a 95% precision.
@@ -141,7 +141,7 @@ ax.plot(X, [64]*len(X))
 plt.show()
 {% endhighlight %}
 
-![](ProportionsEvaluation_files/ProportionsEvaluation_9_1.png)
+{% include image.html url="https://rguigoures.github.io/images/bootstrap_std.png" width=500 %}
 
 
 
@@ -302,8 +302,7 @@ ax.plot(X, [64]*len(X))
 plt.show()
 {% endhighlight %}
 
-
-![png](ProportionsEvaluation_files/ProportionsEvaluation_23_1.png)
+{% include image.html url="https://rguigoures.github.io/images/binomial_estimator.png" width=500 %}
 
 
 
@@ -384,9 +383,9 @@ print("We observe between May and June a decrease of {0} (Â±{1}) pp of the sat
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
-
-    We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
-
+````
+We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
+````
 
 This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
 
