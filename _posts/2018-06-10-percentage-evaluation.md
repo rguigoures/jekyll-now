@@ -16,21 +16,22 @@ The percentage of people planning to watch the football games is defined as the 
 
 
 {% highlight python %}
-def rate(number_of_people_watching_games, number_of_surveyed_persons):
-    return round(100.* number_of_people_watching_games / number_of_surveyed_persons, 2)
+def rate(nr_people_watching_games, nr_surveyed_persons):
+    return round(100.* nr_people_watching_games / nr_surveyed_persons, 2)
 
-number_of_people_watching_games = 640
-number_of_surveyed_persons = 1000
+nr_people_watching_games = 640
+nr_surveyed_persons = 1000
 print("If {0} persons plan to watch the football games "
       "over {1} surveyed persons, "
       "then the percentage is {2}%"
-      .format(number_of_people_watching_games, 
-              number_of_surveyed_persons, 
-              rate(number_of_people_watching_games, number_of_surveyed_persons)))
+      .format(nr_people_watching_games, 
+              nr_surveyed_persons, 
+              rate(nr_people_watching_games, nr_surveyed_persons)))
 {% endhighlight %}
 
 ````
-If 640 persons plan to watch the footbalL games over 1000 surveyed persons, then the percentage is 64.0%
+If 640 persons plan to watch the footbalL games over 1000 surveyed persons, 
+then the percentage is 64.0%
 ````
 
 #### Problem
@@ -57,25 +58,25 @@ Not sure. So we will repeat the process several times to check whether it is rel
 {% highlight python %}
 import random
 
-number_people_in_the_room = 10
-number_people_watching_the_games = int(0.64 * number_people_in_the_room)
-number_people_not_watching_the_games = number_people_in_the_room - number_people_watching_the_games
-people_in_the_room = ['watching'] * number_people_watching_the_games + \
-                     ['not watching'] * number_people_not_watching_the_games
+nr_people_in_the_room = 10
+nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
+nr_people_not_watching_the_games = nr_people_in_the_room - nr_people_watching_the_games
+people_in_the_room = ['watching'] * nr_people_watching_the_games + \
+                     ['not watching'] * nr_people_not_watching_the_games
 
-def pick_random_person(people_in_the_room, number_people_in_the_room):
-    person_index = random.randint(0, number_people_in_the_room - 1)
+def pick_random_person(people_in_the_room, nr_people_in_the_room):
+    person_index = random.randint(0, nr_people_in_the_room - 1)
     return people_in_the_room[person_index]
 
-def pick_many_times(people_in_the_room, number_people_in_the_room):
-    number_people_watching_the_games = 0
-    for i in range(number_people_in_the_room):
-        ball = pick_random_person(people_in_the_room, number_people_in_the_room)
+def pick_many_times(people_in_the_room, nr_people_in_the_room):
+    nr_people_watching_the_games = 0
+    for i in range(nr_people_in_the_room):
+        ball = pick_random_person(people_in_the_room, nr_people_in_the_room)
         if ball == 'watching':
-            number_people_watching_the_games += 1
-    return round(100.*number_people_watching_the_games / number_people_in_the_room, 2)
+            nr_people_watching_the_games += 1
+    return round(100.*nr_people_watching_the_games / nr_people_in_the_room, 2)
 
-print("{0}% of surveyed persons plan to watch the games.".format(pick_many_times(people_in_the_room, number_people_in_the_room)))
+print("{0}% of surveyed persons plan to watch the games.".format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
 {% endhighlight %}
 
 ````
@@ -91,16 +92,16 @@ Let's repeat the experience 1000 times for different sample sizes.
 from matplotlib import pyplot as plt
 import random
 
-number_people_in_the_room_list = [2**i for i in range(1,16)]
+nr_people_in_the_room_list = [2**i for i in range(1,16)]
 X,Y = [],[]
 for i in range(1000):
-    number_people_in_the_room = random.choice(number_people_in_the_room_list)
-    number_people_watching_the_games = int(0.64 * number_people_in_the_room)
-    number_people_not_watching_the_games = number_people_in_the_room - number_people_watching_the_games
-    people_in_the_room = ['watching'] * number_people_watching_the_games + \
-                         ['not watching'] * number_people_not_watching_the_games
-    percentage_watching_the_games = pick_many_times(people_in_the_room, number_people_in_the_room)
-    X.append(number_people_in_the_room)
+    nr_people_in_the_room = random.choice(nr_people_in_the_room_list)
+    nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
+    nr_people_not_watching_the_games = nr_people_in_the_room - nr_people_watching_the_games
+    people_in_the_room = ['watching'] * nr_people_watching_the_games + \
+                         ['not watching'] * nr_people_not_watching_the_games
+    percentage_watching_the_games = pick_many_times(people_in_the_room, nr_people_in_the_room)
+    X.append(nr_people_in_the_room)
     Y.append(percentage_watching_the_games)
 fig, ax = plt.subplots()
 ax.set_xscale('log', basex=2)
@@ -120,17 +121,17 @@ from matplotlib import pyplot as plt
 import random
 import numpy as np
 
-number_people_in_the_room_list = [2**i for i in range(1,16)]
+nr_people_in_the_room_list = [2**i for i in range(1,16)]
 X,Y,Yerr = [],[],[]
-for number_people_in_the_room in number_people_in_the_room_list:
+for nr_people_in_the_room in nr_people_in_the_room_list:
     percentage_people_watching_the_games = []
     for i in range(10):
-        number_people_watching_the_games = int(0.64 * number_people_in_the_room)
-        number_people_not_watching_the_games = number_people_in_the_room - number_people_watching_the_games
-        people_in_the_room = ['watching'] * number_people_watching_the_games + \
-                             ['not watching'] * number_people_not_watching_the_games
-        percentage_people_watching_the_games.append(pick_many_times(people_in_the_room, number_people_in_the_room))
-    X.append(number_people_in_the_room)
+        nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
+        nr_people_not_watching_the_games = nr_people_in_the_room - nr_people_watching_the_games
+        people_in_the_room = ['watching'] * nr_people_watching_the_games + \
+                             ['not watching'] * nr_people_not_watching_the_games
+        percentage_people_watching_the_games.append(pick_many_times(people_in_the_room, nr_people_in_the_room))
+    X.append(nr_people_in_the_room)
     Y.append(np.mean(percentage_people_watching_the_games))
     Yerr.append(2*np.std(percentage_people_watching_the_games))
 plt.clf()
@@ -288,12 +289,12 @@ from matplotlib import pyplot as plt
 import random
 import numpy as np
 
-number_people_in_the_room_list = [2**i for i in range(1,16)]
+nr_people_in_the_room_list = [2**i for i in range(1,16)]
 X,Y,Yerr = [],[],[]
-for number_people_in_the_room in number_people_in_the_room_list:
-    X.append(number_people_in_the_room)
+for nr_people_in_the_room in nr_people_in_the_room_list:
+    X.append(nr_people_in_the_room)
     Y.append(64)
-    Yerr.append(compute_confidence_interval(.64, number_people_in_the_room, 0.95)*100)
+    Yerr.append(compute_confidence_interval(.64, nr_people_in_the_room, 0.95)*100)
 plt.clf()
 fig, ax = plt.subplots()
 ax.set_xscale('log', basex=2)
@@ -340,10 +341,10 @@ The first solution would be to compare the confidence intervals of the two propo
 {% highlight python %}
 satisfaction_rate_in_may = 0.45
 satisfaction_rate_in_june = 0.43
-number_of_surveyed_persons = 1000
+nr_surveyed_persons = 1000
 
-confidence_may = compute_confidence_interval(satisfaction_rate_in_may, number_of_surveyed_persons, precision=0.95)
-confidence_june = compute_confidence_interval(satisfaction_rate_in_june, number_of_surveyed_persons, precision=0.95)
+confidence_may = compute_confidence_interval(satisfaction_rate_in_may, nr_surveyed_persons, precision=0.95)
+confidence_june = compute_confidence_interval(satisfaction_rate_in_june, nr_surveyed_persons, precision=0.95)
 
 print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
 print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
@@ -371,12 +372,12 @@ def compute_difference_confidence_interval(p1, n1, p2, n2, precision):
 
 satisfaction_rate_in_may = 0.45
 satisfaction_rate_in_june = 0.43
-number_of_surveyed_persons = 1000
+nr_surveyed_persons = 1000
 
 confidence_difference_may_june = compute_difference_confidence_interval(satisfaction_rate_in_may, 
-                                                                        number_of_surveyed_persons, 
+                                                                        nr_surveyed_persons, 
                                                                         satisfaction_rate_in_june, 
-                                                                        number_of_surveyed_persons, 
+                                                                        nr_surveyed_persons, 
                                                                         precision=.95)
 
 print("We observe between May and June a decrease of {0} (Â±{1}) pp of the satisfaction rate"
