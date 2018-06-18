@@ -253,7 +253,7 @@ Let's do some maths! Let's write the binomial estimator as a conditional probabi
 
 Let's suppose that we want to have a confidence interval with a 95% precision, that is an error rate of 5%.
 
-We can then iterate over k from 1 and sum $P(k \mid n, p)$, until we hit half of the error rate, i.e 2.5%:
+We can then iterate over k from 1 and sum \\(P(k \mid n, p)\\), until we hit half of the error rate, i.e 2.5%:
 
 $$
 \begin{align}
@@ -310,7 +310,7 @@ Yes. There is also a way to estimate that value:
 
 $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 
-where \\(p\\) is the percentage, $n$ is the number of samples and z is the z score, constant value depending on the required precision.
+where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z score, constant value depending on the required precision.
 
 
 {% highlight python %}
