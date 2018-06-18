@@ -75,10 +75,10 @@ def pick_many_times(people_in_the_room, number_people_in_the_room):
     return round(100.*number_people_watching_the_games / number_people_in_the_room, 2)
 
 print("{0}% of surveyed persons plan to watch the games.".format(pick_many_times(people_in_the_room, number_people_in_the_room)))
-
-70.0% of surveyed persons plan to watch the games.
-
 {% endhighlight %}
+
+    70.0% of surveyed persons plan to watch the games.
+
 
 We can observe that for a sample of only 10 persons, the percentage is very unreliable. Conversely if we increase the sample size, the estimation of the percentage is more accurate. 
 
