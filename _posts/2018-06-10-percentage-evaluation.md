@@ -45,7 +45,7 @@ To answer that question, several statistical tools can be used.
 
 Bootstrapping consists in randomly sampling observations with replacement, that is, every surveyed person is independent from each other and the probability of getting an certain answer does not affect the probability of the answer of the next person. 
 
-#### Illustrated version
+#### Illustration
 
 Imagine 10 persons to be surveyed are in a room. There are also 10 interviewers. The first investigator picks someone in the room, conduct the survey and brings the person back to the room. Then, the second investigator repeats the same process. And so on with the next 8 interviewers.
 
