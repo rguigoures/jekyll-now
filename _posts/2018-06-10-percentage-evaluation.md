@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analysis of a Call Detail record
+title: How to evaluate percentages?
 ---
 
 Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the french population. It appeared that 64% of surveyed people declared they planned to watch the games.
