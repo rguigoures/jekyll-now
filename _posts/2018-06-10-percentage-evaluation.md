@@ -29,10 +29,10 @@ print("If {0} persons plan to watch the football games "
               rate(nr_people_watching_games, nr_surveyed_persons)))
 {% endhighlight %}
 
-```
+{% highlight %}
 If 640 persons plan to watch the football games over 1000 surveyed persons, 
 then the percentage is 64.0%
-```
+{% endhighlight %}
 
 
 #### Problem
@@ -82,9 +82,9 @@ print("{0}% of surveyed persons plan to watch the games."
       .format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
 {% endhighlight %}
 
-```
+{% highlight %}
 70.0% of surveyed persons plan to watch the games.
-```
+{% endhighlight %}
 
 We can observe that for a sample of only 10 persons, the percentage is very unreliable. Conversely if we increase the sample size, the estimation of the percentage is more accurate. 
 
@@ -157,7 +157,7 @@ plt.show()
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-```
+{% highlight %}
 For 2 surveyed persons, the percentage of persons watching the games is 40.0 (Â± 60.0)%
 For 4 surveyed persons, the percentage of persons watching the games is 47.5 (Â± 56.8)%
 For 8 surveyed persons, the percentage of persons watching the games is 52.5 (Â± 36.7)%
@@ -173,7 +173,7 @@ For 4096 surveyed persons, the percentage of persons watching the games is 64.0 
 For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
 For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
 For 32768 surveyed persons, the percentage of persons watching the games is 64.1 (Â± 0.5)%
-```
+{% endhighlight %}
 
 ### The binomial confidence interval
 
@@ -198,13 +198,13 @@ print("For 10,000 surveyed persons, the probability that 6,400 of them plan to w
 if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
 {% endhighlight %}
 
-```
+{% highlight %}
 For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29% 
-```
+{% endhighlight %}
     
-```
+{% highlight %}
 For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
-```
+{% endhighlight %}
 
 This is quite counterintuitive: the more there are observations, the less it is reliable.
 
@@ -218,10 +218,10 @@ print("The probability to randomly find 64 persons planning to watch the games o
 L = 1/10000.
 print("The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is {}%".format(round(100*L, 2)))
 {% endhighlight %}
-```
+{% highlight %}
 The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%
 The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%
-```
+{% endhighlight %}
 
 **Question**: How to derive the confidence interval from it?
 
@@ -244,9 +244,9 @@ for k in range(1,1000):
         print "Lower bound of the 95% confidence interval is when we hit k={}".format(k)
         break
 {% endhighlight %}
-```
+{% highlight %}
 Lower bound of the 95% confidence interval is when we hit k=610
-```
+{% endhighlight %}
 
 Now we have found the lower bound of the confidence interval, let's do the same for computing the upper bound:
 
@@ -261,9 +261,9 @@ for k in range(0,1000):
         print "Upper bound of the 95% confidence interval is when we hit k={}".format(1000-k)
         break
 {% endhighlight %}
-```
+{% highlight %}
 Upper bound of the 95% confidence interval is when we hit k=670
-```
+{% endhighlight %}
 
 **Conclusion**: For 1,000 surveyed persons, the percentage to find 640 persons pretending planning watching the games  is equal to 64 (± 3)%, with a 95% precision. 
 
@@ -286,9 +286,9 @@ def compute_confidence_interval(p, n, precision):
 
 print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95), 2)))
 {% endhighlight %}
-```
+{% highlight %}
 Error rate is: 9.41
-```
+{% endhighlight %}
 
 Now let's plot the same chart as we did for bootstrapping. And note that we obtain similar confidence intervals.
 
@@ -320,7 +320,7 @@ plt.show()
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
 {% endhighlight %}
-```
+{% highlight %}
 For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
 For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
 For 8 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 33.3)%
@@ -336,7 +336,7 @@ For 4096 surveyed persons, the percentage of persons watching the games is 64.0 
 For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 1.0)%
 For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.7)%
 For 32768 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 0.5)%
-```
+{% endhighlight %}
 
 ### Comparing two proportions
 
@@ -358,10 +358,10 @@ confidence_june = compute_confidence_interval(satisfaction_rate_in_june, nr_surv
 print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
 print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
 {% endhighlight %}
-```
+{% highlight %}
 The satisfaction rate in May is 45.0 (±3.0)%
 The satisfaction rate in June is 43.0 (±3.0)%
-```
+{% endhighlight %}
 
 In this case, we observe a decrease of 3pp of the satisfaction rate between May and June. The confidence intervals overlap but this is not enough to draw any conclusion.
 
@@ -393,8 +393,8 @@ print("We observe between May and June a decrease of {0} (Â±{1}) pp of the sat
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
-```
+{% highlight %}
 We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
-```
+{% endhighlight %}
 
 This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
