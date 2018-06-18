@@ -136,8 +136,8 @@ for nr_people_in_the_room in nr_people_in_the_room_list:
                                            nr_people_watching_the_games
         people_in_the_room = ['watching'] * nr_people_watching_the_games + \
                              ['not watching'] * nr_people_not_watching_the_games
-        percentage_people_watching_the_games.append(pick_many_times(people_in_the_room, 
-                                                                    nr_people_in_the_room))
+        percentage_people_watching_the_games.append(
+                    pick_many_times(people_in_the_room, nr_people_in_the_room))
     X.append(nr_people_in_the_room)
     Y.append(np.mean(percentage_people_watching_the_games))
     Yerr.append(2*np.std(percentage_people_watching_the_games))
