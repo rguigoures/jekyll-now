@@ -455,7 +455,8 @@ print("We observe between May and June a decrease of {0} (±{1}) pp of the
               round(100*confidence_difference_may_june)))
 {% endhighlight %}
 {% highlight html %}
-We observe between May and June a decrease of 2.0 (±4.0) pp of the satisfaction rate
+We observe between May and June a decrease of 2.0 (±4.0) pp of the 
+satisfaction rate
 {% endhighlight %}
 
 This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
