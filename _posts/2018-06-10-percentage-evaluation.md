@@ -53,7 +53,7 @@ This will give us the percentage of people planning to watch the games.
 Not sure. So we will repeat the process several times to check whether it is reliable or not.
 
 
-```python
+{% highlight python %}
 import random
 
 number_people_in_the_room = 10
@@ -75,7 +75,7 @@ def pick_many_times(people_in_the_room, number_people_in_the_room):
     return round(100.*number_people_watching_the_games / number_people_in_the_room, 2)
 
 print("{0}% of surveyed persons plan to watch the games.".format(pick_many_times(people_in_the_room, number_people_in_the_room)))
-```
+{% endhighlight %}
 
     70.0% of surveyed persons plan to watch the games.
 
@@ -85,7 +85,7 @@ We can observe that for a sample of only 10 persons, the percentage is very unre
 Let's repeat the experience 1000 times for different sample sizes.
 
 
-```python
+{% highlight python %}
 from matplotlib import pyplot as plt
 import random
 
@@ -104,16 +104,16 @@ fig, ax = plt.subplots()
 ax.set_xscale('log', basex=2)
 ax.plot(X, Y, 'ro')
 plt.show()
-```
+{% endhighlight %}
 
 
-![png](ProportionsEvaluation_files/ProportionsEvaluation_7_0.png)
+![](ProportionsEvaluation_files/ProportionsEvaluation_7_0.png)
 
 
 So, how can we assess the certainty of a calculated percentage? One option consists in computing the average value of the percentages over each trial, and the standard deviation. In the following plot, bars are for 2 standard deviation since we want to get confidence intervals with a 95% precision.
 
 
-```python
+{% highlight python %}
 from matplotlib import pyplot as plt
 import random
 import numpy as np
@@ -137,21 +137,16 @@ ax.set_xscale('log', basex=2)
 ax.errorbar(X, Y, fmt='ro', yerr=Yerr)
 ax.plot(X, [64]*len(X))
 plt.show()
-```
+{% endhighlight %}
 
-
-    <matplotlib.figure.Figure at 0x111e91dd0>
-
-
-
-![png](ProportionsEvaluation_files/ProportionsEvaluation_9_1.png)
+![](ProportionsEvaluation_files/ProportionsEvaluation_9_1.png)
 
 
 
-```python
+{% highlight python %}
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
-```
+{% endhighlight %}
 
     For 2 surveyed persons, the percentage of persons watching the games is 40.0 (Â± 60.0)%
     For 4 surveyed persons, the percentage of persons watching the games is 47.5 (Â± 56.8)%
@@ -181,7 +176,7 @@ Of course, there is! This is called the binomial estimator.
 The binomial estimator considers the problem the opposite way: how likely it is that my observations are sampled from my percentage. Concretely, I know that I 64% of french people plan to watch the games, how likely is it that in my sample of 100 persons, 64 of them are going to watch the football games?
 
 
-```python
+{% highlight python %}
 from scipy.stats import binom
 
 L = binom.pmf(n=100, k=64, p=0.64)
@@ -189,7 +184,7 @@ print("For 100 surveyed persons, the probability that 64 of them plan to watch t
 
 L = binom.pmf(n=10000, k=6400, p=0.64)
 print("For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to {}%".format(round(100*L, 2)))
-```
+{% endhighlight %}
 
     For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29% 
     
@@ -201,13 +196,13 @@ This is quite counterintuitive: the more there are observations, the less it is 
 But it is also more likely to find randomly 64 persons planning to watch the games over 100 surveyed people than 6,400 over 10,000.
 
 
-```python
+{% highlight python %}
 L = 1/100.
 print("The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is {}%".format(round(100*L, 2)))
 
 L = 1/10000.
 print("The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is {}%".format(round(100*L, 2)))
-```
+{% endhighlight %}
 
     The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%
     The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%
@@ -226,14 +221,14 @@ We can then iterate over k from 1 and sum $P(k \mid n, p)$, until we hit half of
 $$P(k=1 \mid n=1000, p=0.64)+P(k=2 \mid n=1000, p=0.64)+...+P(k=x_L \mid n=1000, p=0.64) = 2.5\%$$
 
 
-```python
+{% highlight python %}
 L=0
 for k in range(1,1000):
     L += binom.pmf(n=1000, k=k, p=0.64)
     if L>0.025:
         print "Lower bound of the 95% confidence interval is when we hit k={}".format(k)
         break
-```
+{% endhighlight %}
 
     Lower bound of the 95% confidence interval is when we hit k=610
 
@@ -243,14 +238,14 @@ Now we have found the lower bound of the confidence interval, let's do the same 
 $$P(k=1000 \mid n=1000, p=0.6)+P(k=999 \mid n=1000, p=0.6)+...+P(k=x_U \mid n=1000, p=0.6) = 2.5\%$$
 
 
-```python
+{% highlight python %}
 L=0
 for k in range(0,1000):
     L += binom.pmf(n=1000, k=1000-k, p=0.64)
     if L>0.025:
         print "Upper bound of the 95% confidence interval is when we hit k={}".format(1000-k)
         break
-```
+{% endhighlight %}
 
     Upper bound of the 95% confidence interval is when we hit k=670
 
@@ -266,7 +261,7 @@ $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 where $p$ is the percentage, $n$ is the number of samples and z is the z score, constant value depending on the required precision.
 
 
-```python
+{% highlight python %}
 import math
 from scipy.stats import norm
 
@@ -275,7 +270,7 @@ def compute_confidence_interval(p, n, precision):
     return zscore*math.sqrt(p*(1-p)/n)
 
 print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100, 0.95),2)))
-```
+{% endhighlight %}
 
     Error rate is: 9.41
 
@@ -283,7 +278,7 @@ print("Error rate is: {}".format(round(100*compute_confidence_interval(0.64, 100
 Now let's plot the same chart as we did for bootstrapping. And note that we obtain similar confidence intervals.
 
 
-```python
+{% highlight python %}
 from matplotlib import pyplot as plt
 import random
 import numpy as np
@@ -300,21 +295,17 @@ ax.set_xscale('log', basex=2)
 ax.errorbar(X, Y, fmt='ro', yerr=Yerr)
 ax.plot(X, [64]*len(X))
 plt.show()
-```
-
-
-    <matplotlib.figure.Figure at 0x11227a5d0>
-
+{% endhighlight %}
 
 
 ![png](ProportionsEvaluation_files/ProportionsEvaluation_23_1.png)
 
 
 
-```python
+{% highlight python %}
 for i,x in enumerate(X):
     print("For {0} surveyed persons, the percentage of persons watching the games is {1} (Â± {2})%".format(x, round(Y[i],1), round(Yerr[i],1)))
-```
+{% endhighlight %}
 
     For 2 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 66.5)%
     For 4 surveyed persons, the percentage of persons watching the games is 64.0 (Â± 47.0)%
@@ -342,7 +333,7 @@ Imagine you want to compare the evoluation of a percentage month over month. Let
 The first solution would be to compare the confidence intervals of the two proportions.
 
 
-```python
+{% highlight python %}
 satisfaction_rate_in_may = 0.45
 satisfaction_rate_in_june = 0.43
 number_of_surveyed_persons = 1000
@@ -352,7 +343,7 @@ confidence_june = compute_confidence_interval(satisfaction_rate_in_june, number_
 
 print("The satisfaction rate in May is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_may), round(100*confidence_may)))
 print("The satisfaction rate in June is {0} (Â±{1})%".format(round(100*satisfaction_rate_in_june), round(100*confidence_june)))
-```
+{% endhighlight %}
 
     The satisfaction rate in May is 45.0 (Â±3.0)%
     The satisfaction rate in June is 43.0 (Â±3.0)%
@@ -369,7 +360,7 @@ $$e = z \displaystyle\sqrt{\dfrac{p_1(1-p_1)}{n_1} + \dfrac{p_2(1-p_2)}{n_2}}$$
 where $p_1$ and $p_2$ are the percentages and $n_1$ and $n_2$ the number of surveyed persons, of respectively the first and the second month.
 
 
-```python
+{% highlight python %}
 def compute_difference_confidence_interval(p1, n1, p2, n2, precision):
     zscore = abs(norm.ppf((1-precision)/2.))
     return zscore * math.sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)
@@ -387,7 +378,7 @@ confidence_difference_may_june = compute_difference_confidence_interval(satisfac
 print("We observe between May and June a decrease of {0} (Â±{1}) pp of the satisfaction rate"
       .format(round(abs(100*(satisfaction_rate_in_may-satisfaction_rate_in_june))), 
               round(100*confidence_difference_may_june)))
-```
+{% endhighlight %}
 
     We observe between May and June a decrease of 2.0 (Â±4.0) pp of the satisfaction rate
 
@@ -395,6 +386,3 @@ print("We observe between May and June a decrease of {0} (Â±{1}) pp of the sat
 This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
 
 
-```python
-
-```
