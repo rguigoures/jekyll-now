@@ -15,7 +15,7 @@ _Allez les bleus !!!_
 The percentage of people planning to watch the football games is defined as the number of people planning to watch the games divided by the number of surveyed people.
 
 
-{% highlight python linenos %}
+{% highlight python %}
 def rate(number_of_people_watching_games, number_of_surveyed_persons):
     return round(100.* number_of_people_watching_games / number_of_surveyed_persons, 2)
 
