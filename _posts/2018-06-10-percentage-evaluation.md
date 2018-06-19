@@ -3,15 +3,11 @@ layout: post
 title: Tutorial - How to evaluate percentages?
 ---
 
+Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared planning to watch the games. This percentage has an error estimation attached to it. The bigger the error, the less likely the percentage to be accurate and the less it is possible to generalize the percentage to the overall population. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
+
 **Note**: this is the blog version of the tutorial. If you want to reproduce the experiments, you can check the corresponding [Jupyter Notebook](https://github.com/rguigoures/tutorials/blob/master/ProportionsEvaluation.ipynb). 
 
-Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared they plan to watch the games.
-
 {% include image.html url="https://rguigoures.github.io/images/french_rooster.jpg" width=350 %}
-
-This percentage has an error estimation attached to it and the bigger the error the less likely the percentage to be accurate. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
-
-_Allez les bleus !!!_
 
 #### Definition
 The percentage of people planning to watch the football games is defined as the number of people planning to watch the games divided by the number of surveyed people.
