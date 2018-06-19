@@ -67,12 +67,6 @@ For 64 surveyed persons, the percentage of persons watching the games is 63.4 (�
 For 128 surveyed persons, the percentage of persons watching the games is 64.0 (± 6.0)%  
 For 256 surveyed persons, the percentage of persons watching the games is 61.1 (± 4.9)%  
 For 512 surveyed persons, the percentage of persons watching the games is 63.5 (± 2.2)%  
-For 1024 surveyed persons, the percentage of persons watching the games is 63.0 (± 3.7)%  
-For 2048 surveyed persons, the percentage of persons watching the games is 63.7 (± 1.9)%  
-For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (± 1.3)%  
-For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (± 0.5)%  
-For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (± 0.7)%  
-For 32768 surveyed persons, the percentage of persons watching the games is 64.1 (± 0.5)%  
 </font></div>
 
 ### The binomial confidence interval
@@ -87,6 +81,7 @@ The binomial estimator considers the problem the opposite way: how likely it is 
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29%.  
+
 For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
 </font></div>
 
@@ -96,7 +91,8 @@ But it is also more likely to find randomly 64 persons planning to watch the gam
 
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%.  
+The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%.
+  
 The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%.
 </font></div>
 
@@ -115,7 +111,8 @@ $$
 &P(k=1 \mid n=1000, p=0.64)\\
 +&P(k=2 \mid n=1000, p=0.64)\\
 +&... \\
-+&P(k=x_L \mid n=1000, p=0.64) = 2.5\%
++&P(k=x_L \mid n=1000, p=0.64) \\
+=& 2.5\%
 \end{align}
 $$
 
@@ -131,7 +128,8 @@ $$
 &P(k=1000 \mid n=1000, p=0.64)\\
 +&P(k=999 \mid n=1000, p=0.64)\\
 +&... \\
-+&P(k=x_U \mid n=1000, p=0.64) = 2.5\%
++&P(k=x_U \mid n=1000, p=0.64) \\
+&= 2.5\%
 \end{align}
 $$
 
@@ -169,12 +167,6 @@ For 64 surveyed persons, the percentage of persons watching the games is 64.0 (�
 For 128 surveyed persons, the percentage of persons watching the games is 64.0 (± 8.3)%  
 For 256 surveyed persons, the percentage of persons watching the games is 64.0 (± 5.9)%  
 For 512 surveyed persons, the percentage of persons watching the games is 64.0 (± 4.2)%  
-For 1024 surveyed persons, the percentage of persons watching the games is 64.0 (± 2.9)%  
-For 2048 surveyed persons, the percentage of persons watching the games is 64.0 (± 2.1)%  
-For 4096 surveyed persons, the percentage of persons watching the games is 64.0 (± 1.5)%  
-For 8192 surveyed persons, the percentage of persons watching the games is 64.0 (± 1.0)%  
-For 16384 surveyed persons, the percentage of persons watching the games is 64.0 (± 0.7)%  
-For 32768 surveyed persons, the percentage of persons watching the games is 64.0 (± 0.5)%  
 </font></div>
 
 ### Comparing two proportions
