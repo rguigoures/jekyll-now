@@ -5,7 +5,7 @@ title: Tutorial - How to evaluate percentages?
 
 **Note**: this is the blog version of the tutorial. If you want to reproduce the experiments, you can check the corresponding [Jupyter Notebook](https://github.com/rguigoures/tutorials/blob/master/ProportionsEvaluation.ipynb). 
 
-Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the french population. It appeared that 64% of surveyed people declared they planned to watch the games.
+Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared they plan to watch the games.
 
 {% include image.html url="https://rguigoures.github.io/images/french_rooster.jpg" width=350 %}
 
@@ -17,7 +17,7 @@ _Allez les bleus !!!_
 The percentage of people planning to watch the football games is defined as the number of people planning to watch the games divided by the number of surveyed people.
 
 
-_If 640 persons plan to watch the football games over 1000 surveyed persons, then the percentage is 64.0%_
+```If 640 persons plan to watch the football games over 1000 surveyed persons, then the percentage is 64.0%```
 
 
 #### Problem
