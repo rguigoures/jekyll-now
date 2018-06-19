@@ -17,9 +17,7 @@ _Allez les bleus !!!_
 The percentage of people planning to watch the football games is defined as the number of people planning to watch the games divided by the number of surveyed people.
 
 
-```
-If 640 persons plan to watch the football games over 1000 surveyed persons, then the percentage is 64.0%
-```
+```If 640 persons plan to watch the football games over 1000 surveyed persons, then the percentage is 64.0%```
 
 
 #### Problem
