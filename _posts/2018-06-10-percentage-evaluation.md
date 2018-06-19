@@ -147,13 +147,13 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
     font-family: Helvetica, Arial, sans-serif; 
     border-collapse: collapse; 
     border-spacing: 0;
-    align: center;
+    margin: 0px auto;
 }
 .tablelines th { 
     border: 1px solid #CCC; 
     width: 150px; 
     height: 38px;
-    valign: middle;
+    vertical-align: middle;
     background: #F3F3F3; 
     font-weight: bold; 
 } 
@@ -161,7 +161,7 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
     border: 1px solid #CCC; 
     height: 35px;
     width: 150px; 
-    valign: middle;
+    vertical-align: middle;
     background: #FAFAFA; 
     text-align: center; 
 }
