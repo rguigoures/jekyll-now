@@ -143,20 +143,22 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
 
 <style>
 .tablelines table {
-    width: 400px;
     color: #333; 
     font-family: Helvetica, Arial, sans-serif; 
-    width: 640px; 
     border-collapse: collapse; 
     border-spacing: 0;
 }
 .tablelines th { 
-    border: 1px solid #CCC; height: 35px;
+    border: 1px solid #CCC; 
+    width: 100px; 
+    height: 35px;
     background: #F3F3F3; 
     font-weight: bold; 
 } 
 .tablelines td {
-    border: 1px solid #CCC; height: 35px;
+    border: 1px solid #CCC; 
+    height: 35px;
+    width: 100px; 
     background: #FAFAFA; 
     text-align: center; 
 }
