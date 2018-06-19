@@ -36,8 +36,10 @@ Once all ten interviewers have collected the answers, we get the percentage of p
 No. To see it, we can repeat the full process several times and check the obtained results. Let's do it 3 times:
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-70.0% of surveyed persons plan to watch the games.    
+70.0% of surveyed persons plan to watch the games.   
+
 50.0% of surveyed persons plan to watch the games.  
+
 60.0% of surveyed persons plan to watch the games.  
 </font></div>
 
@@ -77,7 +79,7 @@ The binomial estimator considers the problem the opposite way: how likely it is 
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29%.  
-
+  
 For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
 </font></div>
 
