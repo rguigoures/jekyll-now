@@ -15,24 +15,7 @@ _Allez les bleus !!!_
 The percentage of people planning to watch the football games is defined as the number of people planning to watch the games divided by the number of surveyed people.
 
 
-{% highlight python %}
-def rate(nr_people_watching_games, nr_surveyed_persons):
-    return round(100.* nr_people_watching_games / nr_surveyed_persons, 2)
-
-nr_people_watching_games = 640
-nr_surveyed_persons = 1000
-print("If {0} persons plan to watch the football games "
-      "over {1} surveyed persons, "
-      "then the percentage is {2}%"
-      .format(nr_people_watching_games, 
-              nr_surveyed_persons, 
-              rate(nr_people_watching_games, nr_surveyed_persons)))
-{% endhighlight %}
-
-{% highlight html %}
-If 640 persons plan to watch the football games over 1000 surveyed persons, 
-then the percentage is 64.0%
-{% endhighlight %}
+_If 640 persons plan to watch the football games over 1000 surveyed persons, then the percentage is 64.0%_
 
 
 #### Problem
@@ -47,7 +30,7 @@ Bootstrapping consists in randomly sampling observations with replacement, that 
 
 #### Illustration
 
-Imagine 10 persons to be surveyed are in a room. There are also 10 interviewers. The first investigator picks someone in the room, conduct the survey and brings the person back to the room. Then, the second investigator repeats the same process. And so on with the next 8 interviewers.
+Imagine 10 persons to be surveyed are in a room. There are also 10 interviewers. The first investigator picks someone in the room, conducts the survey and brings the person back to the room. Then, the second investigator repeats the same process. And so on with the next 8 interviewers.
 
 This will give us the percentage of people planning to watch the games.
 
@@ -55,99 +38,19 @@ This will give us the percentage of people planning to watch the games.
 
 Not sure. So we will repeat the process several times to check whether it is reliable or not.
 
+1st trial: _70.0% of surveyed persons plan to watch the games._  
+2nd trial: _50.0% of surveyed persons plan to watch the games._  
+3rd trial: _60.0% of surveyed persons plan to watch the games._  
 
-{% highlight python %}
-import random
+We can observe that for a sample of only 10 persons, the percentage is very unreliable. The challenge is to find out how many persons I need to survey to get a reliable percentage estimation.
 
-nr_people_in_the_room = 10
-nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
-nr_people_not_watching_the_games = nr_people_in_the_room - \
-                                   nr_people_watching_the_games
-people_in_the_room = ['watching'] * nr_people_watching_the_games + \
-                     ['not watching'] * nr_people_not_watching_the_games
-
-def pick_random_person(people_in_the_room, nr_people_in_the_room):
-    person_index = random.randint(0, nr_people_in_the_room - 1)
-    return people_in_the_room[person_index]
-
-def pick_many_times(people_in_the_room, nr_people_in_the_room):
-    nr_people_watching_the_games = 0
-    for i in range(nr_people_in_the_room):
-        ball = pick_random_person(people_in_the_room, nr_people_in_the_room)
-        if ball == 'watching':
-            nr_people_watching_the_games += 1
-    return round(100.*nr_people_watching_the_games / nr_people_in_the_room, 2)
-
-print("{0}% of surveyed persons plan to watch the games."
-      .format(pick_many_times(people_in_the_room, nr_people_in_the_room)))
-{% endhighlight %}
-
-{% highlight html %}
-70.0% of surveyed persons plan to watch the games.
-{% endhighlight %}
-
-We can observe that for a sample of only 10 persons, the percentage is very unreliable. Conversely if we increase the sample size, the estimation of the percentage is more accurate. 
-
-Let's repeat the experience 1000 times for different sample sizes.
-
-
-{% highlight python %}
-from matplotlib import pyplot as plt
-import random
-
-nr_people_in_the_room_list = [2**i for i in range(1,16)]
-X,Y = [],[]
-for i in range(1000):
-    nr_people_in_the_room = random.choice(nr_people_in_the_room_list)
-    nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
-    nr_people_not_watching_the_games = nr_people_in_the_room - \
-                                       nr_people_watching_the_games
-    people_in_the_room = ['watching'] * nr_people_watching_the_games + \
-                         ['not watching'] * nr_people_not_watching_the_games
-    percentage_watching_the_games = pick_many_times(people_in_the_room, 
-                                                    nr_people_in_the_room)
-    X.append(nr_people_in_the_room)
-    Y.append(percentage_watching_the_games)
-fig, ax = plt.subplots()
-ax.set_xscale('log', basex=2)
-ax.plot(X, Y, 'ro')
-plt.show()
-{% endhighlight %}
+Let's repeat the experience 1000 times for different sample sizes. The Figure below shows that 
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap.png" width=500 %}
 
+**Question** how can we assess the certainty of a calculated percentage? 
 
-
-So, how can we assess the certainty of a calculated percentage? One option consists in computing the average value of the percentages over each trial, and the standard deviation. In the following plot, bars are for 2 standard deviation since we want to get confidence intervals with a 95% precision.
-
-
-{% highlight python %}
-from matplotlib import pyplot as plt
-import random
-import numpy as np
-
-nr_people_in_the_room_list = [2**i for i in range(1,16)]
-X,Y,Yerr = [],[],[]
-for nr_people_in_the_room in nr_people_in_the_room_list:
-    percentage_people_watching_the_games = []
-    for i in range(10):
-        nr_people_watching_the_games = int(0.64 * nr_people_in_the_room)
-        nr_people_not_watching_the_games = nr_people_in_the_room - \
-                                           nr_people_watching_the_games
-        people_in_the_room = ['watching'] * nr_people_watching_the_games + \
-                             ['not watching'] * nr_people_not_watching_the_games
-        percentage_people_watching_the_games.append(
-                    pick_many_times(people_in_the_room, nr_people_in_the_room))
-    X.append(nr_people_in_the_room)
-    Y.append(np.mean(percentage_people_watching_the_games))
-    Yerr.append(2*np.std(percentage_people_watching_the_games))
-plt.clf()
-fig, ax = plt.subplots()
-ax.set_xscale('log', basex=2)
-ax.errorbar(X, Y, fmt='ro', yerr=Yerr)
-ax.plot(X, [64]*len(X))
-plt.show()
-{% endhighlight %}
+One option consists in computing the average value of the percentages over each trial, and the standard deviation. In the following plot, bars are for 2 standard deviation since we want to get confidence intervals with a 95% precision.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap_std.png" width=500 %}
 
