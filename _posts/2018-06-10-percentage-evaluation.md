@@ -3,7 +3,7 @@ layout: post
 title: Tutorial - How to evaluate percentages?
 ---
 
-Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared planning to watch the games. This percentage has an error estimation attached to it. The bigger the error, the less likely the percentage to be accurate and the less it is possible to generalize the percentage to the overall population. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
+Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared planning to watch the games. This percentage has an error estimation attached to it. The bigger the error, the less likely the percentage to be accurate and the less it is possible to generalize it to the overall population. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
 
 **Note**: this is the blog version of the tutorial. If you want to reproduce the experiments, you can check the corresponding [Jupyter Notebook](https://github.com/rguigoures/tutorials/blob/master/ProportionsEvaluation.ipynb). 
 
@@ -23,17 +23,17 @@ To answer that question, several statistical tools can be used.
 
 #### Definition
 
-Bootstrapping consists in randomly sampling observations with replacement, that is, every surveyed person is independent from each other and the probability of getting an certain answer does not affect the probability of the answer of the next person. 
+Bootstrapping consists in randomly sampling observations with replacement, that is, every person is surveyed independently from another and the probability of getting an certain answer does not affect the probability of the answer of the next answered person. 
 
 #### Illustration
 
-Imagine 10 persons to be surveyed are in a room. There are also 10 interviewers. The first investigator picks someone in the room, conducts the survey and brings the person back to the room. Then, the second investigator repeats the same process. And so on with the next 8 interviewers.
+Imagine 10 persons to be surveyed are in a room. There are also 10 interviewers. The first interviewer picks someone in the room, conducts the survey and brings the person back to the room. Then, the second interviewer repeats the same process without knowing who has already answered the questions. And so on for the next 8 interviewers.
 
-This will give us the percentage of people planning to watch the games.
+Once all ten interviewers have collected the answers, we get the percentage of people planning to watch the games.
 
 **Question**: is this percentage accurate?
 
-Not sure. So we will repeat the process several times to check whether it is reliable or not.
+No. To see it, we can repeat the full process several times and check the obtained results. Let's do it 3 times:
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 70.0% of surveyed persons plan to watch the games.    
@@ -41,15 +41,15 @@ Not sure. So we will repeat the process several times to check whether it is rel
 60.0% of surveyed persons plan to watch the games.  
 </font></div>
 
-We can observe that for a sample of only 10 persons, the percentage is very unreliable. The challenge is to find out how many persons I need to survey to get a reliable percentage estimation.
+We can observe that for a sample of only 10 persons, the percentage varies a lot. The challenge is to find out how many persons we need to survey to get a reliable percentage estimation.
 
-Let's repeat the experience 1000 times for different sample sizes. The Figure below shows that 
+Let's repeat the experience 1000 times for different sample sizes. On the Figure below, x axis is the number of surveyed persons (log scale), y axis is the percentage of people claiming they plan to watch the games, and the dots corresponds to the obtained result for each of the 1,000 trials.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap.png" width=500 %}
 
 **Question** how can we assess the certainty of a calculated percentage? 
 
-One option consists in computing the average value of the percentages over each trial, and the standard deviation. In the following plot, bars are for 2 standard deviation since we want to get confidence intervals with a 95% precision.
+One option consists in computing the average percentage value and the standard deviation for each number of surveyed persons. In the following plot, bars are twice the standard deviation, so that we get confidence intervals at a 95% precision level.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap_std.png" width=500 %}
 
@@ -67,13 +67,13 @@ For 512 surveyed persons, the percentage of persons watching the games is 63.5 (
 
 ### The binomial confidence interval
 
-Bootstrapping is nice but sampling is a pretty heavy process for evaluating a percentage.
+Bootstrapping is simple and intuitive but sampling is a pretty heavy process for evaluating a percentage.
 
 **Question**: Is there a way to compute directly the confidence using the numbers of surveyed persons and the percentage?
 
 Of course, there is! This is called the binomial estimator. 
 
-The binomial estimator considers the problem the opposite way: how likely it is that my observations are sampled from my percentage. Concretely, I know that I 64% of french people plan to watch the games, how likely is it that in my sample of 100 persons, 64 of them are going to watch the football games?
+The binomial estimator considers the problem the opposite way: how likely it is that the results of the survey are sampled from the percentage. Concretely, we know that 64% of french people plan to watch the games, how likely is it that in a sample of 100 persons, 64 of them are going to watch the football games?
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29%.  
@@ -81,10 +81,7 @@ For 100 surveyed persons, the probability that 64 of them plan to watch the game
 For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
 </font></div>
 
-This is quite counterintuitive: the more there are observations, the less it is reliable.
-
-But it is also more likely to find randomly 64 persons planning to watch the games over 100 surveyed people than 6,400 over 10,000.
-
+This is quite counterintuitive: the more there are observations, the less it is reliable. But it is also more likely to find randomly 64 persons planning to watch the games over 100 surveyed people than 6,400 over 10,000.
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%.
@@ -98,9 +95,9 @@ Let's do some maths! Let's write the binomial estimator as a conditional probabi
 
 **Example**: In the survey published in the news, 1,000 persons were surveyed. Then, \\(P(k=640 \mid n=1000, p=0.64)\\) denotes the probability to find 640 persons planning to watch the games over 1,000 surveyed people knowing that the expected percentage is 64%.
 
-Let's suppose that we want to have a confidence interval with a 95% precision, that is an error rate of 5%.
+Let's suppose that we want to have a confidence interval at a 95% precision level, that corresponds to an error rate of 5%.
 
-We can then iterate over k from 1 and sum \\(P(k \mid n, p)\\), until we hit half of the error rate, i.e 2.5%:
+We can then iterate over k from 1 and sum \\(P(k \mid n, p)\\) at each iteration, until we hit half of the error rate, i.e 2.5%:
 
 $$
 \begin{align}
@@ -112,9 +109,8 @@ $$
 \end{align}
 $$
 
-
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-Lower bound of the 95% confidence interval is when we hit k=610
+Lower bound hit at k=610
 </font></div>
 
 Now we have found the lower bound of the confidence interval, let's do the same for computing the upper bound:
@@ -129,12 +125,11 @@ $$
 \end{align}
 $$
 
-
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-Upper bound of the 95% confidence interval is when we hit k=670
+Upper bound hit at k=670
 </font></div>
 
-**Conclusion**: For 1,000 surveyed persons, the percentage to find 640 persons pretending planning watching the games  is equal to 64 (± 3)%, with a 95% precision. 
+**Conclusion**: For 1,000 surveyed persons, if we find 640 persons planning to watch the games, then the percentage is equal to 64 (± 3)%, at a 95% precision level. 
 
 **Question**: Is there a way to compute it directly?
 
@@ -142,11 +137,18 @@ Yes. There is also a way to estimate that value:
 
 $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 
-where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z score, constant value depending on the required precision.
+where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z value, constant value depending on the required precision. The z value is pretty difficult to compute. Here is a table for common precision values:
 
+
+| Precision  | Error rate    | Z value |
+| ---------- |---------------| --------|
+| 68.2%      | 31.8%         | 1.00    |
+| 90.0%      | 10.0%         | 1.64    |
+| 95.0%      | 5.0%          | 1.96    |
+| 99.0%      | 1.0%          | 2.58    |
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-Error rate is: 9.41
+For 1000 surveyed persons and a percentage of 64% planning watching the games, error rate is: 2.98
 </font></div>
 
 Now let's plot the same chart as we did for bootstrapping. And note that we obtain similar confidence intervals.
@@ -167,15 +169,15 @@ For 512 surveyed persons, the percentage of persons watching the games is 64.0 (
 
 ### Comparing two proportions
 
-Imagine you want to compare the evoluation of a percentage month over month. Let us use another example here. The news claim that satisfaction rate of citizens with the actions lead by the president dropped from 45% to 43%. A survey has been conducted on a sample of 1,000 persons.
+Imagine we want to compare the evolution of a percentage month over month. Let's use another example here. The news claim that satisfaction rate of citizens with the actions lead by the president dropped from 45% to 43%. A survey has been conducted on a sample of 1,000 persons.
 
-**Question**: How can I assess whether this change is relevant or not?
+**Question**: How can we assess whether this change is relevant or not?
 
 The first solution would be to compare the confidence intervals of the two proportions.
 
-
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 The satisfaction rate in May is 45.0 (±3.0)%  
+
 The satisfaction rate in June is 43.0 (±3.0)%  
 </font></div>
 
@@ -194,4 +196,4 @@ where \\(p_1\\) and \\(p_2\\) are the percentages and \\(n_1\\) and \\(n_2\\) th
 We observe between May and June a decrease of 2.0 (±4.0) pp of the satisfaction rate
 </font></div>
 
-This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
+The confidence interval is higher than the evolution itself. This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
