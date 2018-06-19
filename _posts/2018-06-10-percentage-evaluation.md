@@ -149,6 +149,7 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
 | 95.0%      | 5.0%          | 1.96    |
 | 99.0%      | 1.0%          | 2.58    |
 
+
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 1000 surveyed persons and a percentage of 64% planning watching the games, error rate is: 2.98
 </font></div>
