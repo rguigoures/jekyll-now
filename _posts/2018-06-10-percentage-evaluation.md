@@ -37,9 +37,9 @@ No. To see it, we can repeat the full process several times and check the obtain
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 70.0% of surveyed persons plan to watch the games.   
-
+<br>
 50.0% of surveyed persons plan to watch the games.  
-
+<br>
 60.0% of surveyed persons plan to watch the games.  
 </font></div>
 
@@ -141,14 +141,17 @@ $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 
 where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z value, constant value depending on the required precision. The z value is pretty difficult to compute. Here is a table for common precision values:
 
-
+<style>
+.tablelines table, .tablelines td, .tablelines th {
+        border: 1px solid black;
+        }
+</style>
 | Precision  | Error rate    | Z value |
 | ---------- |---------------| --------|
 | 68.2%      | 31.8%         | 1.00    |
 | 90.0%      | 10.0%         | 1.64    |
 | 95.0%      | 5.0%          | 1.96    |
 | 99.0%      | 1.0%          | 2.58    |
-
 <br>
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 1000 surveyed persons and a percentage of 64% planning watching the games, error rate is: 2.98
