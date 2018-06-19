@@ -79,7 +79,7 @@ The binomial estimator considers the problem the opposite way: how likely it is 
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 100 surveyed persons, the probability that 64 of them plan to watch the game, if the expected percentage is 64%, is equal to 8.29%.  
-  
+<br>  
 For 10,000 surveyed persons, the probability that 6,400 of them plan to watch the game, if the expected percentage is 64%, is equal to 0.83%
 </font></div>
 
@@ -87,7 +87,7 @@ This is quite counterintuitive: the more there are observations, the less it is 
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 The probability to randomly find 64 persons planning to watch the games over 100 surveyed people is 1.0%.
-  
+<br>
 The probability to randomly find 6,400 persons planning to watch the games over 10,000 surveyed people is 0.01%.
 </font></div>
 
@@ -149,7 +149,7 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
 | 95.0%      | 5.0%          | 1.96    |
 | 99.0%      | 1.0%          | 2.58    |
 
-
+<br>
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 1000 surveyed persons and a percentage of 64% planning watching the games, error rate is: 2.98
 </font></div>
