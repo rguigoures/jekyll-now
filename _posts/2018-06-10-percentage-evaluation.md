@@ -123,7 +123,7 @@ $$
 +&P(k=999 \mid n=1000, p=0.64)\\
 +&... \\
 +&P(k=x_U \mid n=1000, p=0.64) \\
-&= 2.5\%
+=& 2.5\%
 \end{align}
 $$
 
@@ -152,6 +152,8 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
 | 90.0%      | 10.0%         | 1.64    |
 | 95.0%      | 5.0%          | 1.96    |
 | 99.0%      | 1.0%          | 2.58    |
+{: .tablelines}
+
 <br>
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 1000 surveyed persons and a percentage of 64% planning watching the games, error rate is: 2.98
