@@ -141,7 +141,6 @@ $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 
 where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z value, constant value depending on the required precision. The z value is pretty difficult to compute. Here is a table for common precision values:
 
-<div style="text-align:center">
 <style>
 .tablelines table {
     color: #333; 
@@ -174,7 +173,6 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
 | 95.0%      | 5.0%          | 1.96    |
 | 99.0%      | 1.0%          | 2.58    |
 {: .tablelines}
-</div>
 <br>
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 1000 surveyed persons and a percentage of 64% planning watching the games, confidence is: 2.98
