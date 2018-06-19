@@ -142,9 +142,21 @@ $$e = z \displaystyle\sqrt{\dfrac{p(1-p)}{n}}$$
 where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z value, constant value depending on the required precision. The z value is pretty difficult to compute. Here is a table for common precision values:
 
 <style>
-.tablelines table, .tablelines td, .tablelines th {
-        border: 1px solid black;
-        }
+.tablelines table {  
+    color: #333; 
+    font-family: Helvetica, Arial, sans-serif; 
+    width: 640px; 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+}, .tablelines th { 
+    border: 1px solid #CCC; height: 30px;
+    background: #F3F3F3; 
+    font-weight: bold; 
+}, .tablelines td {
+    border: 1px solid #CCC; height: 30px;
+    background: #FAFAFA; 
+    text-align: center; 
+}
 </style>
 | Precision  | Error rate    | Z value |
 | ---------- |---------------| --------|
