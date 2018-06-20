@@ -3,7 +3,7 @@ layout: post
 title: Tutorial - How to evaluate percentages?
 ---
 
-Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared planning to watch the games. This percentage has a confidence attached to it. The bigger the confidence, the more accurate the percentage and the more it can be generalized to the overall population. This confidence is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the confidence interval is. Let's use the example of the poll on football as an illustration.
+Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the population of France. It appeared that 64% of surveyed people declared planning to watch the games. This percentage has a confidence attached to it. The bigger the confidence, the more accurate the percentage and the more it can be generalized to the overall population. This confidence is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the confidence interval is. Let's use the example of the poll on football as an illustration.
 
 **Note**: this is the blog version of the tutorial. If you want to reproduce the experiments, you can check the corresponding [Jupyter Notebook](https://github.com/rguigoures/tutorials/blob/master/ProportionsEvaluation.ipynb). 
 
@@ -27,9 +27,9 @@ Bootstrapping consists in randomly sampling observations with replacement, that 
 
 #### Illustration
 
-Imagine 10 persons to be surveyed are in a room. There are also 10 interviewers. The first interviewer picks someone in the room, conducts the survey and brings the person back to the room. Then, the second interviewer repeats the same process without knowing who has already answered the questions. And so on for the next 8 interviewers.
+Imagine 10 persons are in a room and 10 interviewers are waiting outside the room. The first interviewer enters the room, asks one person whether she plans to watch the games, and leaves the room. Then, the second interviewer repeats the same process without knowing who has answered the previous interviewer. And so on for the next 8 interviewers.
 
-Once all ten interviewers have collected the answers, we get the percentage of people planning to watch the games.
+Once all ten interviewers have collected an answer, we can compute the percentage of interviewers who got a "yes".
 
 **Question**: is this percentage accurate?
 
@@ -45,15 +45,15 @@ No. To see it, we can repeat the full process several times and check the obtain
 
 We can observe that for a sample of only 10 persons, the percentage varies a lot. The challenge is to find out how many persons we need to survey to get a reliable percentage estimation.
 
-Let's repeat the experience 1,000 times for different sample sizes. On the Figure below, x axis is the number of surveyed persons (log scale), y axis is the percentage of people claiming they plan to watch the games, and the dots corresponds to the obtained result for each of the 1,000 trials.
+Let's repeat the experience 1,000 times for different sample sizes. On the Figure below, x axis is the number of surveyed persons (log scale), y axis is the percentage of people declaring they plan to watch the games, and the dots corresponds to the obtained result for each of the 1,000 trials.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap.png" width=500 %}
 
-We can observe that, the more we survey people, the more the percentages we obtain converge to 64.0%.
+The figure above shows that the more we survey people, the more the percentage we obtain converge to 64.0%.
 
 **Question** how can we assess the confidence in the estimation of a calculated percentage? 
 
-One option consists in computing the average percentage value and the standard deviation for each number of surveyed persons. In the following plot, bars are twice the standard deviation, so that we get confidence intervals at a 95% precision level.
+One option consists in computing the average percentage and the standard deviation for each number of surveyed persons. In the following plot, bars are twice the standard deviation, so that we get confidence intervals at a 95% precision level.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap_std.png" width=500 %}
 
@@ -107,7 +107,7 @@ Let's do some maths! Let's write the binomial estimator as a conditional probabi
 
 **Example**: In the survey published in the news, 1,000 persons were surveyed. Then, \\(P(k=640 \mid n=1000, p=0.64)\\) denotes the probability to find 640 persons planning to watch the games over 1,000 surveyed people knowing that the expected percentage is 64%.
 
-Let's suppose that we want to have a confidence interval at a 95% precision level.
+Let's suppose that we want a confidence interval at a 95% precision level. To obtain it, we must find the lower (610) and the upper (670) interval, so that 95% of the area under the binomial density curve is located within an interval centered around the expected number (640) of persons planning watching the games. The figure below illustrates the confidence interval.
 
 {% include image.html url="https://rguigoures.github.io/images/area_under_curve.png" width=500 %}
 
