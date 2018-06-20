@@ -127,8 +127,8 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
     font-family: Helvetica, Arial, sans-serif; 
     border-collapse: collapse; 
     border-spacing: 0;
-    margin: 0px auto;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .tablelines th { 
     border: 1px solid #CCC; 
