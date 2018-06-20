@@ -107,39 +107,9 @@ Let's do some maths! Let's write the binomial estimator as a conditional probabi
 
 **Example**: In the survey published in the news, 1,000 persons were surveyed. Then, \\(P(k=640 \mid n=1000, p=0.64)\\) denotes the probability to find 640 persons planning to watch the games over 1,000 surveyed people knowing that the expected percentage is 64%.
 
-Let's suppose that we want to have a confidence interval at a 95% precision level, that corresponds to an error rate of 5%.
+Let's suppose that we want to have a confidence interval at a 95% precision level.
 
-We can then iterate over k from 1 and sum \\(P(k \mid n, p)\\) at each iteration, until we hit half of the error rate, i.e 2.5%:
-
-$$
-\begin{align}
-&P(k=1 \mid n=1000, p=0.64)\\
-+&P(k=2 \mid n=1000, p=0.64)\\
-+&... \\
-+&P(k=x_L \mid n=1000, p=0.64) \\
-=& 2.5\%
-\end{align}
-$$
-
-<div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-Lower bound hit at k=610
-</font></div>
-
-Now we have found the lower bound of the confidence interval, let's do the same for computing the upper bound:
-
-$$
-\begin{align}
-&P(k=1000 \mid n=1000, p=0.64)\\
-+&P(k=999 \mid n=1000, p=0.64)\\
-+&... \\
-+&P(k=x_U \mid n=1000, p=0.64) \\
-=& 2.5\%
-\end{align}
-$$
-
-<div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-Upper bound hit at k=670
-</font></div>
+{% include image.html url="https://rguigoures.github.io/images/area_under_curve.png" width=500 %}
 
 **Conclusion**: For 1,000 surveyed persons, if we find 640 persons planning to watch the games, then the percentage is equal to 64 (± 3)%, at a 95% precision level. 
 
