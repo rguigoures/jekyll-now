@@ -3,7 +3,7 @@ layout: post
 title: Tutorial - How to evaluate percentages?
 ---
 
-Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared planning to watch the games. This percentage has an error estimation attached to it. The bigger the error, the less likely the percentage to be accurate and the less it is possible to generalize it to the overall population. This error rate is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the error estimation is. Let's use the example of the poll on football as an illustration.
+Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm over the french population. It appeared that 64% of the surveyed people declared planning to watch the games. This percentage has a confidence attached to it. The bigger the confidence, the more accurate the percentage and the more it can be generalized to the overall population. This confidence is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the confidence interval is. Let's use the example of the poll on football as an illustration.
 
 **Note**: this is the blog version of the tutorial. If you want to reproduce the experiments, you can check the corresponding [Jupyter Notebook](https://github.com/rguigoures/tutorials/blob/master/ProportionsEvaluation.ipynb). 
 
@@ -23,7 +23,7 @@ To answer that question, several statistical tools can be used.
 
 #### Definition
 
-Bootstrapping consists in randomly sampling observations with replacement, that is, every person is surveyed independently from another and the probability of getting an certain answer does not affect the probability of the answer of the next answered person. 
+Bootstrapping consists in randomly sampling observations with replacement, that is, every person is surveyed independently from another and the probability of getting a certain answer does not affect the probability of the answers of the next surveyed persons. 
 
 #### Illustration
 
@@ -45,25 +45,35 @@ No. To see it, we can repeat the full process several times and check the obtain
 
 We can observe that for a sample of only 10 persons, the percentage varies a lot. The challenge is to find out how many persons we need to survey to get a reliable percentage estimation.
 
-Let's repeat the experience 1000 times for different sample sizes. On the Figure below, x axis is the number of surveyed persons (log scale), y axis is the percentage of people claiming they plan to watch the games, and the dots corresponds to the obtained result for each of the 1,000 trials.
+Let's repeat the experience 1,000 times for different sample sizes. On the Figure below, x axis is the number of surveyed persons (log scale), y axis is the percentage of people claiming they plan to watch the games, and the dots corresponds to the obtained result for each of the 1,000 trials.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap.png" width=500 %}
 
-**Question** how can we assess the certainty of a calculated percentage? 
+We can observe that, the more we survey people, the more the percentages we obtain converge to 64.0%.
+
+**Question** how can we assess the confidence in the estimation of a calculated percentage? 
 
 One option consists in computing the average percentage value and the standard deviation for each number of surveyed persons. In the following plot, bars are twice the standard deviation, so that we get confidence intervals at a 95% precision level.
 
 {% include image.html url="https://rguigoures.github.io/images/bootstrap_std.png" width=500 %}
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-For 2 surveyed persons, the percentage of persons watching the games is 40.0 (± 60.0)%  
+For 2 surveyed persons, the percentage of persons watching the games is 40.0 (± 60.0)%
+<br>
 For 4 surveyed persons, the percentage of persons watching the games is 47.5 (± 56.8)%  
+<br>
 For 8 surveyed persons, the percentage of persons watching the games is 52.5 (± 36.7)%  
+<br>
 For 16 surveyed persons, the percentage of persons watching the games is 56.3 (± 26.8)%  
+<br>
 For 32 surveyed persons, the percentage of persons watching the games is 62.8 (± 20.6)%  
+<br>
 For 64 surveyed persons, the percentage of persons watching the games is 63.4 (± 9.6)%  
+<br>
 For 128 surveyed persons, the percentage of persons watching the games is 64.0 (± 6.0)%  
+<br>
 For 256 surveyed persons, the percentage of persons watching the games is 61.1 (± 4.9)%  
+<br>
 For 512 surveyed persons, the percentage of persons watching the games is 63.5 (± 2.2)%  
 </font></div>
 
@@ -71,7 +81,7 @@ For 512 surveyed persons, the percentage of persons watching the games is 63.5 (
 
 Bootstrapping is simple and intuitive but sampling is a pretty heavy process for evaluating a percentage.
 
-**Question**: Is there a way to compute directly the confidence using the numbers of surveyed persons and the percentage?
+**Question**: Is there a way to compute directly the confidence using the numbers of surveyed persons and the calculated percentage?
 
 Of course, there is! This is called the binomial estimator. 
 
