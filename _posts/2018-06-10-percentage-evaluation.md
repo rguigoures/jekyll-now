@@ -194,13 +194,21 @@ Now let's plot the same chart as we did for bootstrapping. And note that we obta
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 For 2 surveyed persons, the percentage of persons watching the games is 64.0 (± 66.5)%  
+<br>
 For 4 surveyed persons, the percentage of persons watching the games is 64.0 (± 47.0)%  
+<br>
 For 8 surveyed persons, the percentage of persons watching the games is 64.0 (± 33.3)%  
+<br>
 For 16 surveyed persons, the percentage of persons watching the games is 64.0 (± 23.5)%  
+<br>
 For 32 surveyed persons, the percentage of persons watching the games is 64.0 (± 16.6)%  
+<br>
 For 64 surveyed persons, the percentage of persons watching the games is 64.0 (± 11.8)%  
+<br>
 For 128 surveyed persons, the percentage of persons watching the games is 64.0 (± 8.3)%  
+<br>
 For 256 surveyed persons, the percentage of persons watching the games is 64.0 (± 5.9)%  
+<br>
 For 512 surveyed persons, the percentage of persons watching the games is 64.0 (± 4.2)%  
 </font></div>
 
@@ -214,7 +222,7 @@ The first solution would be to compare the confidence intervals of the two propo
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 The satisfaction rate in May is 45.0 (±3.0)%  
-
+<br>
 The satisfaction rate in June is 43.0 (±3.0)%  
 </font></div>
 
