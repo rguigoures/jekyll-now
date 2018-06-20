@@ -226,7 +226,7 @@ The satisfaction rate in May is 45.0 (±3.0)%
 The satisfaction rate in June is 43.0 (±3.0)%  
 </font></div>
 
-In this case, we observe a decrease of 3pp of the satisfaction rate between May and June. The confidence intervals overlap but this is not enough to draw any conclusion.
+In this case, we observe a decrease of 2pp of the satisfaction rate between May and June. The confidence intervals overlap but this is not enough to draw any conclusion.
 
 **Question**: Can we directly compute a confidence interval on the decrease itself?
 
