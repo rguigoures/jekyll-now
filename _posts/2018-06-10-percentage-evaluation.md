@@ -128,13 +128,14 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
     border-collapse: collapse; 
     border-spacing: 0;
     margin: 0px auto;
+    text-align: center;
 }
 .tablelines th { 
     border: 1px solid #CCC; 
     width: 150px; 
     height: 38px;
     vertical-align: middle;
-    background: #F3F3F3; 
+    background: #eff5fb; 
     font-weight: bold; 
 } 
 .tablelines td {
@@ -142,7 +143,7 @@ where \\(p\\) is the percentage, \\(n\\) is the number of samples and z is the z
     height: 35px;
     width: 150px; 
     vertical-align: middle;
-    background: #FAFAFA; 
+    background: #ffffff; 
     text-align: center; 
 }
 </style>
