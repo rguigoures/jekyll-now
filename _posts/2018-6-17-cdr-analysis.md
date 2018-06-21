@@ -23,7 +23,7 @@ While modularity maximization aims at grouping cells being densely connected, in
 Let's define \\(A\\) the adjacency matrix of size n (number of cells) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(C\\). Let's denote \\(P\\) the joint probability matrix corresponding to the matrix \\(C\\). The mutual information (MI) is defined as follows:
 
 $$
-MI(P) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{ij} * \log \left( \dfrac{P_{ij}}{P_i P_j} \right)
+MI(P) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{ij} \log \left( \dfrac{P_{ij}}{P_i P_j} \right)
 $$
 
 Let's use a simple example to illustrate the behavior of the mutual information:
@@ -78,8 +78,10 @@ After running the algorithm, we can observe the underlying structure of the data
 
 ## Information theoretic coclustering
 
-One great advantage of mutual information maximization lies in being able to tackle bipartite graphs: it is possible to simultaneously cluster cells and countries.
+One great advantage of mutual information maximization lies in being able to tackle bipartite graphs: it is possible to simultaneously cluster cells and countries. This is called coclustering.
 
 # Bayesian blockmodeling
+
+Information theoretic clustering directly optimizes the Kullback-Leibler divergence from the partition to the actual data. This approach is valid when the amount of data is large enough to properly estimate the joint probability matrix between antennas and countries. But if it's not the case, we can easily get spurious patterns. One solution to avoid this problem consists in adding a regulariuation term to the optimized criterion. Another solution would be to build a Bayesian model. Actually, the logarithm multinomial estimator over the cells of the adjacency matrix converges to the Kullback-Leibler divergence from the partition to the actual data.
 
 # Latent representation of the cells
