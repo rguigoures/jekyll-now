@@ -212,4 +212,4 @@ where \\(p_1\\) and \\(p_2\\) are the percentages and \\(n_1\\) and \\(n_2\\) th
 We observe between May and June a decrease of 2.0 (±4.0) pp of the satisfaction rate, at a 95% precision interval.
 </font></div>
 
-The confidence interval is higher than the evolution itself. This means that the sample size of the surveyed population is too small to conclude from the confidence interval of an evidence of a decrease, that can be generalized to the entire population of the country. This analysis does not however question the fact that there is a trend of decrease. 
+**Conclusion**: The confidence interval is higher than the evolution itself. This means that the sample size of the surveyed population is too small to conclude from the confidence interval of an evidence of a decrease, that can be generalized to the entire population of the country. This analysis does not however question the fact that there is a trend of decrease. 
