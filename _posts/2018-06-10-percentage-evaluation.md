@@ -189,7 +189,7 @@ Imagine we want to compare the evolution of a percentage month over month. Let's
 
 **Question**: How can we assess whether this change is relevant or not?
 
-The first solution would be to compare the confidence intervals of the two proportions.
+First, we can have a look at the confidence intervals of the two percentage, at a 95% precision level.
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
 The satisfaction rate in May is 45.0 (±3.0)%  
@@ -201,7 +201,7 @@ In this case, we observe a decrease of 2pp of the satisfaction rate between May 
 
 **Question**: Can we directly compute a confidence interval on the decrease itself?
 
-Yes, in a similar way to how we do it for the proportions:
+Yes, in a similar way to how we did it for computing the confidence interval of a percentage:
 
 $$e = z \displaystyle\sqrt{\dfrac{p_1(1-p_1)}{n_1} + \dfrac{p_2(1-p_2)}{n_2}}$$
 
@@ -209,7 +209,7 @@ where \\(p_1\\) and \\(p_2\\) are the percentages and \\(n_1\\) and \\(n_2\\) th
 
 
 <div style="background-color:#eff5fb;padding:15px;"> <font face="Monaco" size="2" color="#75787a">
-We observe between May and June a decrease of 2.0 (±4.0) pp of the satisfaction rate
+We observe between May and June a decrease of 2.0 (±4.0) pp of the satisfaction rate, at a 95% precision interval.
 </font></div>
 
-The confidence interval is higher than the evolution itself. This means that the sample size of the surveyed population is too small to generalize to the rest of the country.
+The confidence interval is higher than the evolution itself. This means that the sample size of the surveyed population is too small to conclude from the confidence interval of an evidence of a decrease, that can be generalized to the entire population of the country. This analysis does not however question the fact that there is a trend of decrease. 
