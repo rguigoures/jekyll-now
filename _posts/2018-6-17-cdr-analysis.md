@@ -14,13 +14,27 @@ In a different post, we propose to train an autoencoder to obtain a latent repre
 
 This section exploits information theory concept to partition the CDRs. The first analysis performs a clustering of the cell identifier while the seconds performs a coclustering, i.e a simultaneous clustering of cell identifier and countries.   
 
+## Data representation
+
+
+
 ## Information theoretic clustering
 
 While modularity maximization aims at grouping cells being densely connected, information theoretic clustering groups cells having a similar distribution of sms over other cells. Concretely, modularity tracks clicks and information theoretic clustering captures hubs and peripheral cells. The Figure 1 illustrates the difference in the structures tracked by both approaches.
 
 {% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
-Let's define \\(A\\) the adjacency matrix of size n (number of cells) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To that end, we can maximize the mutual information of the matrix \\(C\\). Let's denote \\(P\\) the joint probability matrix corresponding to the matrix \\(C\\). The mutual information (MI) is defined as follows:
+Let's define \\(A\\) the adjacency matrix of size n (number of cells) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how much bits we need to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P | Q)\\) denotes the Kullback Leibler divergence from distribution \\(Q\\) to \\(P\\). This is defined as follows.
+
+$$
+KL(P | Q) = P \log \left( \dfrac{P}{Q} \right)
+$$
+
+Let's illustrate the concept using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095.
+
+
+
+we can maximize the mutual information of the matrix \\(C\\). Let's denote \\(P\\) the joint probability matrix corresponding to the matrix \\(C\\). The mutual information (MI) is defined as follows:
 
 $$
 MI(P) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{ij} \log \left( \dfrac{P_{ij}}{P_i P_j} \right)
