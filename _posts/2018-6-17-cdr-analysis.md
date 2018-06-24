@@ -128,4 +128,4 @@ Information theoretic clustering directly optimizes the Kullback-Leibler diverge
 
 # References
 
-[^fn1]: Inderjit S. Dhillon, Subramanyam Mallela, Dharmendra S. Modha, [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
+[^fn1]: Inderjit S. Dhillon et al., [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
