@@ -60,15 +60,12 @@ $$
 
 Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
 
-In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the original adjacency matrix \\(A\\), i.e \\(KL(A \| C)\\). 
+In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the original adjacency matrix \\(A\\), i.e \\(KL(A \| C)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of clustering, the latter case does happen because there can be no interractions between two clusters if the antennas they contain have interractions. 
 
-The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in that case, this case cannot happen since 
-
-
-we can maximize the mutual information of the matrix \\(C\\). Let's denote \\(P\\) the joint probability matrix corresponding to the matrix \\(C\\). The mutual information (MI) is defined as follows:
+It has been proved[^fn1] that minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Since the mutual information of the original data is a constant, we can directly maximize the mutual information of the matrix \\(C\\).The mutual information (MI) is defined as follows:
 
 $$
-MI(P) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{ij} \log \left( \dfrac{P_{ij}}{P_i P_j} \right)
+MI(P_C) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{C,ij} \log \left( \dfrac{P_{C,ij}}{P_{C,i} P_{C,j}} \right)
 $$
 
 Let's use a simple example to illustrate the behavior of the mutual information:
@@ -128,3 +125,6 @@ One great advantage of mutual information maximization lies in being able to tac
 # Bayesian blockmodeling
 
 Information theoretic clustering directly optimizes the Kullback-Leibler divergence from the partition to the actual data. This approach is valid when the amount of data is large enough to properly estimate the joint probability matrix between antennas and countries. But if it's not the case, we can easily get spurious patterns. One solution to avoid this problem consists in adding a regulariuation term to the optimized criterion. Another solution would be to build a Bayesian model. Actually, the logarithm multinomial estimator over the cells of the adjacency matrix converges to the Kullback-Leibler divergence from the partition to the actual data.
+
+
+[^fn1]: Inderjit S. Dhillon, Subramanyam Mallela, Dharmendra S. Modha, "Information-theoretic co-clustering", KDD 2003
