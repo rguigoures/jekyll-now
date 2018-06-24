@@ -102,12 +102,12 @@ C_W = \begin{pmatrix}
 3 & 3
 \end{pmatrix}
 \\\\
-C_B = \begin{pmatrix}
+P_B = \begin{pmatrix}
 0 & \frac{1}{2} \\
 \frac{1}{2} & 0
 \end{pmatrix}
 & \mbox{ } &
-C_W = \begin{pmatrix}
+P_W = \begin{pmatrix}
 \frac{1}{4} & \frac{1}{4} \\
 \frac{1}{4} & \frac{1}{4}
 \end{pmatrix}
@@ -139,12 +139,16 @@ After running the algorithm, we can observe the underlying structure of the data
 
 ## Information theoretic coclustering
 
-One great advantage of mutual information maximization lies in being able to tackle bipartite graphs: it is possible to simultaneously cluster antennas and countries. This is called coclustering.
+One great advantage of information theory based clustering approaches lies in being able to tackle bipartite graphs: it is possible to simultaneously cluster antennas and countries. This is called coclustering.
 
 # Bayesian blockmodeling
 
-Information theoretic clustering directly optimizes the Kullback-Leibler divergence from the partition to the actual data. This approach is valid when the amount of data is large enough to properly estimate the joint probability matrix between antennas and countries. But if it's not the case, we can easily get spurious patterns. One solution to avoid this problem consists in adding a regulariuation term to the optimized criterion. Another solution would be to build a Bayesian model. Actually, the logarithm multinomial estimator over the cells of the adjacency matrix converges to the Kullback-Leibler divergence from the partition to the actual data.
+Information theoretic clustering directly optimizes the Kullback-Leibler divergence from the partition to the actual data. This approach is valid when the amount of data is large enough to properly estimate the joint probability matrix between antennas and countries. But if it's not the case, we can easily get spurious patterns. One solution to avoid this problem consists in adding a regulariuation term to the optimized criterion. Another solution would be to build a Bayesian model. Actually, the average negative logarithm of the multinomial probability mass function over the cells of the adjacency matrix converges to the Kullback-Leibler divergence from the partition to the actual data.
 
+$$
+KL(P_A | \hat{P}_A) \rightarrow -\dfrac{1}{n} \log(f_\matcal{M}(n, A, \hat{P}_A)) \mbox{ when } n \rightarrow +\infty
+$$
+where n is the number of observations (sms in th example) and \\(f_\matcal{M}\\) the probability mass function of the multinomial distribution. This can be easily proved using the Stirling approximation, i.e \\(\log(n!) \rightarrow n\log(n) - n\\) when \\(n \rightarrow +\infty\\). 
 # References
 
 [^fn1]: Inderjit S. Dhillon et al., [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
