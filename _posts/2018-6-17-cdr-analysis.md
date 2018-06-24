@@ -30,7 +30,14 @@ A = \begin{pmatrix}
 1 & 2 & 0 & 0 \\
 1 & 2 & 0 & 0
 \end{pmatrix}
-& \Rightarrow &
+& \Rightarrow  &
+P_A = \begin{pmatrix}
+0 & 0 & \frac{1}{6} & \frac{1}{12} \\
+0 & 0 & \frac{1}{6} & \frac{1}{12} \\
+\frac{1}{12} & \frac{1}{6} & 0 & 0 \\
+\frac{1}{12} & \frac{1}{6} & 0 & 0
+\end{pmatrix}
+\\\\
 C = \begin{pmatrix}
 0 & 6 \\
 6 & 0
