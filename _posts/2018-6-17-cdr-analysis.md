@@ -61,15 +61,15 @@ P_C = \begin{pmatrix}
 \end{align}
 $$
 
-The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P_A \| P_C)\\) denotes the Kullback-Leibler divergence from distribution \\(P_C\\) to \\(P_A\\). This is defined as follows.
+The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P_A \| P_C)\\) denotes the Kullback-Leibler divergence from distribution \\(\hat{P}_A\\) to \\(P_A\\). This is defined as follows.
 
 $$
-KL(P_A | P_C) = P_A \log \left( \dfrac{P_A}{P_C} \right)
+KL(P_A | \hat{P}_A) = P_A \log \left( \dfrac{P_A}{\hat{P}_A} \right)
 $$
 
 Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
 
-In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \| P_C)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of clustering, the latter case does not happen because there must be interractions between two clusters if the antennas they contain have interractions. 
+In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \| \hat{P}_A)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of clustering, the latter case does not happen because there must be interractions between two clusters if the antennas they contain have interractions. 
 
 It has been proved[^fn1] that minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Since the mutual information of the original data is a constant, we can directly maximize the mutual information of the matrix \\(C\\).The mutual information (MI) is defined as follows:
 
@@ -102,6 +102,17 @@ C_W = \begin{pmatrix}
 3 & 3
 \end{pmatrix}
 \\\\
+\begin{align}
+C_B = \begin{pmatrix}
+0 & \frac{1}{2} \\
+\frac{1}{2} & 0
+\end{pmatrix}
+& \mbox{ } &
+C_W = \begin{pmatrix}
+\frac{1}{4} & \frac{1}{4} \\
+\frac{1}{4} & \frac{1}{4}
+\end{pmatrix}
+\\\\
 MI(P_B) = \log(2) & \mbox{ } & MI(P_W) = 0
 \end{align}
 $$
@@ -115,7 +126,7 @@ In order to find the best partition, we apply an algorithm similar to k-means:
 
 K-means algorithms aims at minimizing the intra-cluster variance at each iteration. But according to the Huyghens theorem, minimizing the intra-cluster variance is equivalent to maximizing the inter-class variance since the sum of the intra-cluster and the inter-cluster variance is equal to the data variance. The mutual information, in the case of information theoretic clustering can be seen as an inter-cluster variance maximization.
 
-Let's apply the mutual information maximization algorithm to the call detail record. We fix the number of clusters to five. To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Secondly, the mutual information matrix \\(M = \{m_{ij} \forall i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
+Let's apply the mutual information maximization algorithm to the call detail record. We fix the number of clusters to five for illustration purpose. To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Second, the mutual information matrix \\(M = \{m_{ij} \forall i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
 
 First, let's plot the two matrices for randomly initialized clusters.
 
