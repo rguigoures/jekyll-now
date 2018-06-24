@@ -12,11 +12,9 @@ In a different post, we propose to train an autoencoder to obtain a latent repre
 
 # Data representation
 
-
-
 # Information theoretic clustering
 
-Most graph partitioning approaches, such as modularity maximization, aims at grouping antennas being densely connected, or cliques. Information theoretic clustering conversely groups antenna having a similar distribution of sms over other antennas. The Figure 1 illustrates the difference in the structures tracked by both approaches.
+Most graph partitioning approaches, such as modularity maximization, aim at grouping antennas being densely connected, or cliques. Information theoretic clustering conversely groups antenna having a similar distribution of sms over other antennas. The Figure 1 illustrates the difference in the structures tracked by both approaches.
 
 {% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
@@ -116,16 +114,9 @@ MI(P_B) = \log(2) & \mbox{ } & MI(P_W) = 0
 \end{align}
 $$
 
-The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy. Note that the modularity maximization algorithm would not be able to produce such a partition but put all nodes in a single cluster.
+The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy. Note that a clustering algorithm tracking cliques would not be able to produce such a partition but would put all nodes in a single cluster instead.
 
-In order to find the best partition, we apply an algorithm similar to k-means:
-1. clusters are initialized randomly and balanced,
-2. each antenna is allocated to the cluster, so that the mutual information is maximized,
-3. iterate until clusters do not change anymore.
-
-K-means algorithms aims at minimizing the intra-cluster variance at each iteration. But according to the Huyghens theorem, minimizing the intra-cluster variance is equivalent to maximizing the inter-class variance since the sum of the intra-cluster and the inter-cluster variance is equal to the data variance. The mutual information, in the case of information theoretic clustering can be seen as an inter-cluster variance maximization.
-
-Let's apply the mutual information maximization algorithm to the call detail record. We fix the number of clusters to five for illustration purpose. To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Second, the mutual information matrix \\(M = \{m_{ij} \forall i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
+In order to find the best partition, we apply an agglomerative hierarchical clustering, i.e we start allocating a single antenna to each cluster and we merge them successively so that the mutual information is maximized. Let's apply the algorithm to the call detail record. We fix the number of clusters to five for illustration purpose. To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Second, the mutual information matrix \\(M = \{m_{ij} \forall i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
 
 First, let's plot the two matrices for randomly initialized clusters.
 
@@ -137,7 +128,7 @@ We can see on Figure 2 that the density is similarly distributed in the cell of 
 
 After running the algorithm, we can observe the underlying structure of the data emerging. The joint probability shows cells with high density. But this observation does not mean that the partition is meaningful. Indeed if the clusters are unbalanced, bigger clusters are likely to have high density between themselves. In the mutual information matrix, red cells represent excess of cooccurrences. Conversely, blue cells respresent lacks of cooccurences. The clusters can then be interpreted as follow: antennas in cluster 4 are grouped together because they excessively interract with themselves and less than expected with clusters 0 and 1. Note that the connections between clusters 0 (or 1) and 4 have quite high density but less than expected.  
 
-## Information theoretic coclustering
+# Information theoretic coclustering
 
 One great advantage of information theory based clustering approaches lies in being able to tackle bipartite graphs: it is possible to simultaneously cluster antennas and countries. This is called coclustering.
 
@@ -150,6 +141,11 @@ KL(P_A | \hat{P}_A) \rightarrow -\dfrac{1}{n} \log(f_\mathcal{M}(n, A, \hat{P}_A
 $$
 
 where n is the number of observations (sms in th example) and \\(f_\mathcal{M}\\) the probability mass function of the multinomial distribution. This can be easily proved using the Stirling approximation, i.e \\(\log(n!) \rightarrow n\log(n) - n\\) ; when \\(n \rightarrow +\infty\\). 
+
+# Visualisations
+
+
+
 # References
 
 [^fn1]: Inderjit S. Dhillon et al., [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
