@@ -20,7 +20,7 @@ Most graph partitioning approaches, such as modularity maximization, aims at gro
 
 {% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
-Let's define \\(A\\) the adjacency matrix of size \\(n\\) (number of antenna) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how many bits we lose to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. Let's introduce \\(P_A\\), the joint probability matrix representing the adjacency matrix \\(A\\), i.e the normalized matrix \\(A\\). \\(P_C\\) is a joint probability matrix of size \\(n\\) where cell values are the values of the joint probability between coclusters, normalized by the number of cells in the coclusters. Let's illustrate it:
+Let's define \\(A\\) the adjacency matrix of size \\(n\\) (number of antenna) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how many bits we lose to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. Let's introduce \\(P_A\\), the joint probability matrix representing the adjacency matrix \\(A\\), i.e the matrix \\(A\\) that has been normalized. Similarly, (P_C\\) is the joint probability matrix of the cluster adjacency matrix \\(C\\). Finally, \\(\widehat{P_A}\\) is a joint probability matrix of size \\(n\\) where cell values are the values of the joint probability between coclusters, normalized by the number of cells in the coclusters. Let's illustrate it:
 
 $$
 \begin{align}
@@ -44,6 +44,11 @@ C = \begin{pmatrix}
 \end{pmatrix}
 & \Rightarrow  &
 P_C = \begin{pmatrix}
+0 & \frac{1}{2} \\
+\frac{1}{2} & 0
+\end{pmatrix}
+& \Rightarrow  &
+\widehat{P_A} = \begin{pmatrix}
 0 & 0 & \frac{1}{8} & \frac{1}{8} \\
 0 & 0 & \frac{1}{8} & \frac{1}{8} \\
 \frac{1}{8} & \frac{1}{8} & 0 & 0 \\
@@ -60,7 +65,7 @@ $$
 
 Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
 
-In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the original adjacency matrix \\(A\\), i.e \\(KL(A \| C)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of clustering, the latter case does happen because there can be no interractions between two clusters if the antennas they contain have interractions. 
+In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \| P_C)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of clustering, the latter case does not happen because there must be interractions between two clusters if the antennas they contain have interractions. 
 
 It has been proved[^fn1] that minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Since the mutual information of the original data is a constant, we can directly maximize the mutual information of the matrix \\(C\\).The mutual information (MI) is defined as follows:
 
