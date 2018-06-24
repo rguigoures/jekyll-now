@@ -148,7 +148,8 @@ Information theoretic clustering directly optimizes the Kullback-Leibler diverge
 $$
 KL(P_A | \hat{P}_A) \rightarrow -\dfrac{1}{n} \log(f_\mathcal{M}(n, A, \hat{P}_A)) \mbox{ when } n \rightarrow +\infty
 $$
-where n is the number of observations (sms in th example) and \\(f_\mathcal{M}\\) the probability mass function of the multinomial distribution. This can be easily proved using the Stirling approximation, i.e \\(\log(n!) \rightarrow n\log(n) - n\\) when \\(n \rightarrow +\infty\\). 
+
+where n is the number of observations (sms in th example) and \\(f_\mathcal{M}\\) the probability mass function of the multinomial distribution. This can be easily proved using the Stirling approximation, i.e \\(\log(n!) \rightarrow n\log(n) - n\\) ; when \\(n \rightarrow +\infty\\). 
 # References
 
 [^fn1]: Inderjit S. Dhillon et al., [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
