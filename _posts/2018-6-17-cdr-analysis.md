@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analysis of a Call Detail record (part 1) - from information theory to Bayesian modeling
+title: Analysis of a Call Detail Record (part 1) - from Information Theory to Bayesian Modeling
 ---
 A call detail record (CDR) is a data collected by telephone operator. It contains a sender, a receiver, a timestamp and the duration in case of a call. It is usually aggregated at for privacy matter. The CDR we use for this analysis is a public dataset collected in the region of Milan in Italy. The dataset is available on Kaggle and called [mobile phone activity](https://www.kaggle.com/marcodena/mobile-phone-activity).
 The CDR is pretty rich in information. The analysis in this post is based on the sms traffic. The data we use is then: the emitting antenna identifier, the receiving country and counts of sms. The goal of the analysis is to group antennas because their originating sms are similarly distributed. We propose to use first information theoretic clustering to group antennas based on their cooccurence of sms terminating in the same countries. Second, we will see that we can simultaneously partition antennas the are originating from and the countries the sms are terminating to. This is called co-clustering. Third we will link the information theory to bayesian blockmodeling, showing the benefits and difficulties using such an approach. And finally, we will visualise the results and discuss the outcome of each approach.
@@ -126,5 +126,6 @@ One great advantage of mutual information maximization lies in being able to tac
 
 Information theoretic clustering directly optimizes the Kullback-Leibler divergence from the partition to the actual data. This approach is valid when the amount of data is large enough to properly estimate the joint probability matrix between antennas and countries. But if it's not the case, we can easily get spurious patterns. One solution to avoid this problem consists in adding a regulariuation term to the optimized criterion. Another solution would be to build a Bayesian model. Actually, the logarithm multinomial estimator over the cells of the adjacency matrix converges to the Kullback-Leibler divergence from the partition to the actual data.
 
+# References
 
-[^fn1]: Inderjit S. Dhillon, Subramanyam Mallela, Dharmendra S. Modha, "Information-theoretic co-clustering", KDD 2003
+[^fn1]: Inderjit S. Dhillon, Subramanyam Mallela, Dharmendra S. Modha, [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
