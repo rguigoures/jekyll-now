@@ -8,29 +8,50 @@ The CDR is pretty rich in information. The analysis in this post is based on the
 In a different post, we propose to train an autoencoder to obtain a latent representation of the antennas, using the same data set.
 
 1. Table of content
-{:toc}
+{:toc} 
+
+# Data representation
+
+
 
 # Information theoretic clustering
 
-This section exploits information theory concept to partition the CDRs. The first analysis performs a clustering of the antenna identifier while the seconds performs a coclustering, i.e a simultaneous clustering of antenna identifier and countries.   
-
-## Data representation
-
-
-
-## Information theoretic clustering
-
-Most graph partitioning approaches, such as modularity maximization, aims at grouping antennas being densely connected, or clicks. Information theoretic clustering groups antenna having a similar distribution of sms over other antenna. Concretely, modularity tracks clicks and information theoretic clustering captures hubs and peripheral antenna. The Figure 1 illustrates the difference in the structures tracked by both approaches.
+Most graph partitioning approaches, such as modularity maximization, aims at grouping antennas being densely connected, or cliques. Information theoretic clustering conversely groups antenna having a similar distribution of sms over other antennas. The Figure 1 illustrates the difference in the structures tracked by both approaches.
 
 {% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
-Let's define \\(A\\) the adjacency matrix of size n (number of antenna) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how much bits we need to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P \| Q)\\) denotes the Kullback-Leibler divergence from distribution \\(Q\\) to \\(P\\). This is defined as follows.
+Let's define \\(A\\) the adjacency matrix of size \\(n\\) (number of antenna) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how many bits we lose to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. Let's introduce \\(P_A\\), the joint probability matrix representing the adjacency matrix \\(A\\), i.e the normalized matrix \\(A\\). \\(P_C\\) is a joint probability matrix of size \\(n\\) where cell values are the values of the joint probability between coclusters, normalized by the number of cells in the coclusters. Let's illustrate it:
 
 $$
-KL(P | Q) = P \log \left( \dfrac{P}{Q} \right)
+\begin{align}
+A = \begin{pmatrix}
+0 & 0 & 2 & 1 \\
+0 & 0 & 2 & 1 \\
+1 & 2 & 0 & 0 \\
+1 & 2 & 0 & 0
+\end{pmatrix}
+& \Rightarrow &
+C = \begin{pmatrix}
+0 & 6 \\
+6 & 0
+\end{pmatrix}
+& \Rightarrow  &
+P_C = \begin{pmatrix}
+0 & 0 & \frac{1}{8} & \frac{1}{8} \\
+0 & 0 & \frac{1}{8} & \frac{1}{8} \\
+\frac{1}{8} & \frac{1}{8} & 0 & 0 \\
+\frac{1}{8} & \frac{1}{8} & 0 & 0
+\end{pmatrix}
+\end{align}
 $$
 
-Let's illustrate the concept using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
+The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P_A \| P_C)\\) denotes the Kullback-Leibler divergence from distribution \\(P_C\\) to \\(P_A\\). This is defined as follows.
+
+$$
+KL(P_A | P_C) = P_A \log \left( \dfrac{P_A}{P_C} \right)
+$$
+
+Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
 
 In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the original adjacency matrix \\(A\\), i.e \\(KL(A \| C)\\). 
 
