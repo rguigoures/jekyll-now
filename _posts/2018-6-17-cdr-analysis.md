@@ -55,7 +55,7 @@ P_C = \begin{pmatrix}
 \end{align}
 $$
 
-The Kullback-Leibler is a non symmetric measure and should be read as follow: \\( KL(P_A | \hat{P}_A) \\) denotes the Kullback-Leibler divergence from distribution \\(\hat{P}_A\\) to \\(P_A\\). This is defined as follows.
+The Kullback-Leibler is a non symmetric measure and should be read as follow:  denotes the Kullback-Leibler divergence from distribution \\(\hat{P}_A\\) to \\(P_A\\). This is defined as follows.
 
 $$
 KL(P_A | \hat{P}_A) = P_A \log \left( \dfrac{P_A}{\hat{P}_A} \right)
