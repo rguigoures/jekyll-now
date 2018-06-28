@@ -135,7 +135,7 @@ We can see on Figure 2 that the density is similarly distributed in the cell of 
 After running the algorithm, we can observe the underlying structure of the data emerging. The joint probability shows cells with high density. But this observation does not mean that the partition is meaningful. Indeed if the clusters are unbalanced, bigger clusters are likely to have high density between themselves. In the mutual information matrix, red cells represent excess of cooccurrences. Conversely, blue cells respresent lacks of cooccurences. The clusters can then be interpreted as follow: antennas in cluster 4 are grouped together because they excessively interract with themselves and less than expected with clusters 0 and 1. Note that the connections between clusters 0 (or 1) and 4 have quite high density but less than expected.  
 
 
-<script src="https://rguigoures.github.io/images/map_itcc.geojson"></script>
+<script src="https://rguigoures.github.io/images/map_itcc.geojson" type="text/javascript"></script>
 
 
 
