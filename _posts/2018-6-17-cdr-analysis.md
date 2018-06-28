@@ -14,23 +14,22 @@ In a different post, we propose to train an autoencoder to obtain a latent repre
 
 # Information theoretic coclustering
 
-
-Let's define \\(A\\) the adjacency matrix of size \\(n\\) (number of antenna) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how many bits we lose to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. Let's introduce \\(P_A\\), the joint probability matrix representing the adjacency matrix \\(A\\), i.e the matrix \\(A\\) that has been normalized. Similarly, \\(P_C\\) is the joint probability matrix of the cluster adjacency matrix \\(C\\). Finally, \\(\hat{P}_A\\) is a joint probability matrix of size \\(n\\) where cell values are the values of the joint probability between coclusters, normalized by the number of cells in the coclusters. Let's illustrate it:
+Let's define \\(A\\) the adjacency matrix of size \\(n \times m\\) (number of antennas \\(\times\\) number of countries) and \\(C\\) the partition of \\(A\\) into \\(k \times l\\) blocks (number of clusters of antennas \\(\times\\) number of clusters of countries). The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how many bits we lose to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. Let's introduce \\(P_A\\), the joint probability matrix representing the adjacency matrix \\(A\\), i.e the matrix \\(A\\) that has been normalized by the total number of calls. Similarly, \\(P_C\\) is the joint probability matrix of the cluster adjacency matrix \\(C\\). Finally, \\(\hat{P}_A\\) is a joint probability matrix of size \\(n \times m\\) where cell values are the values of the joint probability between coclusters, normalized by the number of cells in the coclusters. Let's illustrate it:
 
 $$
 \begin{align}
 A = \begin{pmatrix}
-0 & 0 & 2 & 1 \\
-0 & 0 & 2 & 1 \\
-1 & 2 & 0 & 0 \\
-1 & 2 & 0 & 0
+0 & 0 & 2 \\
+0 & 0 & 2 \\
+1 & 2 & 0 \\
+1 & 2 & 0
 \end{pmatrix}
 & \Rightarrow &
 P_A = \begin{pmatrix}
-0 & 0 & \frac{1}{6} & \frac{1}{12} \\
-0 & 0 & \frac{1}{6} & \frac{1}{12} \\
-\frac{1}{12} & \frac{1}{6} & 0 & 0 \\
-\frac{1}{12} & \frac{1}{6} & 0 & 0
+0 & 0 & 0.2 \\
+0 & 0 & 0.2 \\
+0.1 & 0.2 & 0 \\
+0.1 & 0.2 & 0
 \end{pmatrix}
 \end{align}
 $$
@@ -38,20 +37,20 @@ $$
 $$
 \begin{align}
 C = \begin{pmatrix}
-0 & 6 \\
+0 & 4 \\
 6 & 0
 \end{pmatrix}
 & \Rightarrow &
 P_C = \begin{pmatrix}
-0 & \frac{1}{2} \\
-\frac{1}{2} & 0
+0 & 0.4 \\
+0.6 & 0
 \end{pmatrix}
 & \Rightarrow &
 \hat{P}_A = \begin{pmatrix}
-0 & 0 & \frac{1}{8} & \frac{1}{8} \\
-0 & 0 & \frac{1}{8} & \frac{1}{8} \\
-\frac{1}{8} & \frac{1}{8} & 0 & 0 \\
-\frac{1}{8} & \frac{1}{8} & 0 & 0
+0 & 0 & 0.2 \\
+0 & 0 & 0.2 \\
+0.15 & 0.15 & 0 \\
+0.15 & 0.15 & 0
 \end{pmatrix}
 \end{align}
 $$
