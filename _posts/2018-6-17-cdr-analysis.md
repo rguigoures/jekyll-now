@@ -61,7 +61,7 @@ $$
 KL(P_A \mid \hat{P}_A) = P_A \log \left( \dfrac{P_A}{\hat{P}_A} \right)
 $$
 
-Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
+Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 orange and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
 
 In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \mid \hat{P}_A)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of coclustering, the latter case does not happen because there must be interractions between a cluster of antennas and a cluster of countries if the antennas (resp. the countries) it contains have interractions. 
 
@@ -134,6 +134,11 @@ We can see on Figure 2 that the density is similarly distributed in the cell of 
 
 After running the algorithm, we can observe the underlying structure of the data emerging. The joint probability shows cells with high density. But this observation does not mean that the partition is meaningful. Indeed if the clusters are unbalanced, bigger clusters are likely to have high density between themselves. In the mutual information matrix, red cells represent excess of cooccurrences. Conversely, blue cells respresent lacks of cooccurences. The clusters can then be interpreted as follow: antennas in cluster 4 are grouped together because they excessively interract with themselves and less than expected with clusters 0 and 1. Note that the connections between clusters 0 (or 1) and 4 have quite high density but less than expected.  
 
+
+<script src="https://rguigoures.github.io/images/map_itcc.geojson"></script>
+
+
+
 # Bayesian blockmodeling
 
 Information theoretic clustering directly optimizes the Kullback-Leibler divergence from the partition to the actual data. This approach is valid when the amount of data is large enough to properly estimate the joint probability matrix between antennas and countries. But if it's not the case, we can easily get spurious patterns. One solution to avoid this problem consists in adding a regulariuation term to the optimized criterion. Another solution would be to build a Bayesian model. Actually, the average negative logarithm of the multinomial probability mass function over the cells of the adjacency matrix converges to the Kullback-Leibler divergence from the partition to the actual data.
@@ -143,9 +148,6 @@ KL(P_A | \hat{P}_A) \rightarrow -\dfrac{1}{n} \log(f_\mathcal{M}(n, A, \hat{P}_A
 $$
 
 where n is the number of observations (sms in th example) and \\(f_\mathcal{M}\\) the probability mass function of the multinomial distribution. This can be easily proved using the Stirling approximation, i.e \\(\log(n!) \rightarrow n\log(n) - n\\) ; when \\(n \rightarrow +\infty\\). 
-
-# Visualisations
-
 
 
 # References
