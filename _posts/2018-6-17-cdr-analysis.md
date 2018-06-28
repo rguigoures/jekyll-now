@@ -55,7 +55,7 @@ P_C = \begin{pmatrix}
 \end{align}
 $$
 
-The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P_A \| P_C)\\) denotes the Kullback-Leibler divergence from distribution \\(\hat{P}_A\\) to \\(P_A\\). This is defined as follows.
+The Kullback-Leibler is a non symmetric measure and should be read as follow: \\(KL(P_A | \hat{P}_A)\\) denotes the Kullback-Leibler divergence from distribution \\(\hat{P}_A\\) to \\(P_A\\). This is defined as follows.
 
 $$
 KL(P_A | \hat{P}_A) = P_A \log \left( \dfrac{P_A}{\hat{P}_A} \right)
@@ -63,12 +63,12 @@ $$
 
 Let's illustrate the Kullback-Leibler divergence using a simple example. I need 3 apples, 2 oranges and 1 pear to bake a cake. Unfortunately, I can get from the supermarket only bags containing 1 apple, 1 apple and 1 pear. At the end, to make the cake, I need to buy 3 bags and there is 2 pears and 1 orange left. Lets turn is as distributions, the cakes contains 50% apples, 33% oranges and 17% pear. The bags from the supermarket contains 33% of each fruit. The Kullback-Leibler divergence from the bag distribution to the cake distribution is equal to 0.095. Let's now analysis the edge cases: if both the bags and the cake have the same distribution, the Kullback Leibler divergence is null because the there is no fruit left after baking the cake. Conversly, if the bag does not contain oranges, the Kullback Leibler is infinite because, even with an infinite amount of bag, you are not going to bake the cake.
 
-In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \| \hat{P}_A)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of clustering, the latter case does not happen because there must be interractions between two clusters if the antennas they contain have interractions. 
+In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \| \hat{P}_A)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of coclustering, the latter case does not happen because there must be interractions between a cluster of antennas and a cluster of countries if the antennas (resp. the countries) it contains have interractions. 
 
-It has been proved[^fn1] that minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Since the mutual information of the original data is a constant, we can directly maximize the mutual information of the matrix \\(C\\).The mutual information (MI) is defined as follows:
+It has been proved[^fn1] that minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Mutual information measures how much the partition of countries give information about the partition of antenna, and vice versa. In other words, it measure how confident we are guessing the originating antenna knowing the destination country of the call. The mutual information matrix is defined as follows:
 
 $$
-MI(P_C) = \displaystyle\sum_i^k \displaystyle\sum_j^k P_{C,ij} \log \left( \dfrac{P_{C,ij}}{P_{C,i} P_{C,j}} \right)
+MI_{ij}(P_C) = P_{C,ij} \log \left( \dfrac{P_{C,ij}}{P_{C,i} P_{C,j}} \right)
 $$
 
 Let's use a simple example to illustrate the behavior of the mutual information:
