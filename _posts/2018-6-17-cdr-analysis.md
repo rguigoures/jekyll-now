@@ -3,7 +3,7 @@ layout: post
 title: Analysis of a Call Detail Record (part 1) - from Information Theory to Bayesian Modeling
 ---
 A call detail record (CDR) is a data collected by telephone operator. It contains a sender, a receiver, a timestamp and the duration in case of a call. It is usually aggregated at for privacy matter. The CDR we use for this analysis is a public dataset collected in the region of Milan in Italy. The dataset is available on Kaggle and called [mobile phone activity](https://www.kaggle.com/marcodena/mobile-phone-activity).
-The CDR is pretty rich in information. The analysis in this post is based on the sms traffic. The data we use is then: the emitting antenna identifier, the receiving country and counts of sms. The goal of the analysis is to group antennas because their originating sms are similarly distributed. We propose to use first information theoretic clustering to group antennas based on their cooccurence of sms terminating in the same countries. Second, we will see that we can simultaneously partition antennas the are originating from and the countries the sms are terminating to. This is called co-clustering. Third we will link the information theory to bayesian blockmodeling, showing the benefits and difficulties using such an approach. And finally, we will visualise the results and discuss the outcome of each approach.
+The CDR is pretty rich in information. The analysis in this post is based on the sms traffic. The data we use is then: the emitting antenna identifier, the receiving country and call counts. The goal of the analysis is to group antennas because their originating calls are similarly distributed over countries and - simultaneously - group countries because the received calls are distributed over the same antennas. This is called co-clustering. To do so, will first use a method based on information theory and define a set of measures to understand and visualize the results. Then, we will link the information theory to bayesian modeling, showing the benefits and difficulties using such an approach.
 
 In a different post, we propose to train an autoencoder to obtain a latent representation of the antennas, using the same data set.
 
@@ -12,11 +12,8 @@ In a different post, we propose to train an autoencoder to obtain a latent repre
 
 # Data representation
 
-# Information theoretic clustering
+# Information theoretic coclustering
 
-Most graph partitioning approaches, such as modularity maximization, aim at grouping antennas being densely connected, or cliques. Information theoretic clustering conversely groups antenna having a similar distribution of sms over other antennas. The Figure 1 illustrates the difference in the structures tracked by both approaches.
-
-{% include side_by_side_images.html url1="https://rguigoures.github.io/images/modularity_example.png" width1=350 url2="https://rguigoures.github.io/images/itc_example.png" width2=350 description="Fig.1 - Clustering obtained by modularity maximization (left) and information theoretic clustering (right)" %}
 
 Let's define \\(A\\) the adjacency matrix of size \\(n\\) (number of antenna) and \\(C\\) the partition of \\(A\\) into \\(k \times k\\) blocks. The matrix \\(C\\) is a compressed version of the matrix \\(A\\). Compression consists in reducing a large matrix to a smaller matrix, with the minimal information loss. To measure the information loss, we can use the so-called Kullback-Leibler divergence. This concept originates in information theory and measures how many bits we lose to encode a signal A from a signal B. In the present context, we can use it to compare two distributions. Let's introduce \\(P_A\\), the joint probability matrix representing the adjacency matrix \\(A\\), i.e the matrix \\(A\\) that has been normalized. Similarly, \\(P_C\\) is the joint probability matrix of the cluster adjacency matrix \\(C\\). Finally, \\(\hat{P}_A\\) is a joint probability matrix of size \\(n\\) where cell values are the values of the joint probability between coclusters, normalized by the number of cells in the coclusters. Let's illustrate it:
 
