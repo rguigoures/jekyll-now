@@ -65,7 +65,17 @@ Let's illustrate the Kullback-Leibler divergence using a simple example. I need 
 
 In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \mid \hat{P}_A)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of coclustering, the latter case does not happen because there must be interractions between a cluster of antennas and a cluster of countries if the antennas (resp. the countries) it contains have interractions. 
 
-It has been proved\[[^fn1]\] that minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Mutual information measures how much the partition of countries give information about the partition of antenna, and vice versa. In other words, it measure how confident we are guessing the originating antenna knowing the destination country of the call. The mutual information matrix is defined as follows:
+To optimize the Kullback-Leibler divergence, we use the so called ITCC algorithm described in \[[^fn1]\]:
+
+1. Initialize random clusters of antennas and countries
+2. For each antenna, find the cluster minimizing the Kullback-Leibler divergence
+3. For each country, find the cluster minimizing the Kullback-Leibler divergence
+4. Update the clusters
+5. Reiterate until clusters don't change anymore.
+
+The implementation is available [here](https://github.com/rguigoures/CallDetailRecords).
+
+Minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Mutual information measures how much the partition of countries give information about the partition of antenna, and vice versa. In other words, it measure how confident we are guessing the originating antenna knowing the destination country of the call. The mutual information matrix is defined as follows:
 
 $$
 MI_{ij}(P_C) = P_{C,ij} \log \left( \dfrac{P_{C,ij}}{P_{C,i} P_{C,j}} \right)
