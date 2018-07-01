@@ -75,6 +75,45 @@ To optimize the Kullback-Leibler divergence, we use the so called ITCC algorithm
 
 The implementation is available [here](https://github.com/rguigoures/CallDetailRecords).
 
+Let us analyze the results after running the algorithm with 5 clusters of countries and 6 clusters of antennas. We focus first on the clusters of country:
+<style>
+.tablelines table {
+    color: #333; 
+    font-family: Helvetica, Arial, sans-serif; 
+    border-collapse: collapse; 
+    border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tablelines th { 
+    border: 1px solid #CCC; 
+    width: 150px; 
+    height: 38px;
+    vertical-align: middle;
+    background: #eff5fb; 
+    font-weight: bold; 
+} 
+.tablelines td {
+    border: 1px solid #CCC; 
+    height: 35px;
+    width: 150px; 
+    vertical-align: middle;
+    background: #ffffff; 
+    text-align: center; 
+}
+</style>
+| Cluster id  | Countries (>1% overall traffic)       |
+| ----------- |---------------------------------------|
+| 1           | Senegal, Mali, Ivory Coast            |
+| 2           | Ukraine, Romania, Moldova             |
+| 3           | China, Philippines, Sri Lanka         |
+| 4           | Egypt, Bangladesh, Morocco, Pakistan  |
+| 5           | EU, Russia, USA                       |
+{: .tablelines}
+<br>
+
+{% include image.html url="https://rguigoures.github.io/images/itcc_map.png" width=500 description="Fig.3 - Map of Milan. One square represent one antenna. There is one color per cluster." %}
+
 Minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Mutual information measures how much the partition of countries give information about the partition of antenna, and vice versa. In other words, it measure how confident we are guessing the originating antenna knowing the destination country of the call. The mutual information matrix is defined as follows:
 
 $$
@@ -134,7 +173,7 @@ We can see on Figure 2 that the density is similarly distributed in the cell of 
 
 After running the algorithm, we can observe the underlying structure of the data emerging. The joint probability shows cells with high density. But this observation does not mean that the partition is meaningful. Indeed if the clusters are unbalanced, bigger clusters are likely to have high density between themselves. In the mutual information matrix, red cells represent excess of cooccurrences. Conversely, blue cells respresent lacks of cooccurences. The clusters can then be interpreted as follow: antennas in cluster 4 are grouped together because they excessively interract with themselves and less than expected with clusters 0 and 1. Note that the connections between clusters 0 (or 1) and 4 have quite high density but less than expected.  
 
-{% include image.html url="https://rguigoures.github.io/images/itcc_map.png" width=500 description="Fig.3 - Map of Milan. One square represent one antenna. There is one color per cluster." %}
+
 
 # Bayesian blockmodeling
 
