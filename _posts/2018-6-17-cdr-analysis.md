@@ -175,7 +175,7 @@ $$
 
 The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information.
 
-To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(\hat{P}_A\\). Second, the mutual information matrix \\(MI(\hat{P}_A)\\).
+To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P_C\\). Second, the mutual information matrix \\(MI(P_C)\\).
 
 First, let's plot the two matrices for the randomly initialized clusters.
 
