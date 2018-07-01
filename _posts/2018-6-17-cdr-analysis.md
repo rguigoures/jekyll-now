@@ -87,7 +87,6 @@ Let us analyze the results after running the algorithm with 5 clusters of countr
 }
 .tablelines th { 
     border: 1px solid #CCC; 
-    width: 150px; 
     height: 38px;
     vertical-align: middle;
     background: #eff5fb; 
@@ -96,7 +95,6 @@ Let us analyze the results after running the algorithm with 5 clusters of countr
 .tablelines td {
     border: 1px solid #CCC; 
     height: 35px;
-    width: 150px; 
     vertical-align: middle;
     background: #ffffff; 
     text-align: center; 
