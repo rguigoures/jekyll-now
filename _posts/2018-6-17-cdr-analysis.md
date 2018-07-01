@@ -162,13 +162,13 @@ P_W = \begin{pmatrix}
 \end{pmatrix}
 \\\\
 MI(P_B) = \begin{pmatrix}
-0 & 0 \\
-0 & 0
+0 & \frac{1}{2}\log(2) \\
+\frac{1}{2}\log(2) & 0
 \end{pmatrix} 
 & \mbox{ } & 
 MI(P_W) = \begin{pmatrix}
-0 & \frac{1}{2}\log(2) \\
-\frac{1}{2}\log(2) & 0
+0 & 0 \\
+0 & 0
 \end{pmatrix}
 \end{align}
 $$
