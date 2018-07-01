@@ -65,7 +65,7 @@ Let's illustrate the Kullback-Leibler divergence using a simple example. I need 
 
 In information theoretic clustering, we try to find the optimal compressed matrix \\(C\\) which minimizes the Kullback-Leibler divergence to the joint probability distribution of the original adjacency matrix \\(A\\), i.e \\(KL(P_A \mid \hat{P}_A)\\). The Kullback Leibler divergence ranges in theory from \\(0\\) to \\(+\infty\\), but in the context of coclustering, the latter case does not happen because there must be interractions between a cluster of antennas and a cluster of countries if the antennas (resp. the countries) it contains have interractions. 
 
-To optimize the Kullback-Leibler divergence, we use the so called ITCC algorithm described in \[[^fn1]\]:
+To optimize the Kullback-Leibler divergence, we use the following algorithm:
 
 1. Initialize random clusters of antennas and countries
 2. For each antenna, find the cluster minimizing the Kullback-Leibler divergence
