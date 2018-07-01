@@ -181,7 +181,7 @@ First, let's plot the two matrices for the randomly initialized clusters.
 
 {% include image.html url="https://rguigoures.github.io/images/density_mi_random.png" width=500 description="Fig.2 - Random partition of the CDR. Joint probability matrix (left) and mutual information matrix (right)" %}
 
-We can see on Figure 2 that the density is similarly distributed in the cell of the matrix. The mutual information also indicates that the density in the cells is close to the expected value in case of random clustering. In other words, \\(P_{ij} \simeq P_i P_j\\). Once Kullback-Leibler divergence has been maximized, we can observe the underlying structure of the data emerging. 
+We can see on Figure 2 that the density is similarly distributed in the cell of the matrix. The mutual information also indicates that the density in the cells is close to the expected value in case of random clustering. In other words, \\(P_{C,ij} \simeq P_{C,i} P_{C,j}\\). Once Kullback-Leibler divergence has been maximized, we can observe the underlying structure of the data emerging. 
 
 {% include image.html url="https://rguigoures.github.io/images/density_mi_cluster.png" width=500 description="Fig.3 - Partition of the CDR obtained by maximization of the mutual information. Joint probability matrix (left) and mutual information matrix (right)" %}
 
