@@ -104,19 +104,23 @@ Let us analyze the results after running the algorithm with 5 clusters of countr
     text-align: center; 
 }
 </style>
-| Cluster id  | Countries (>1% overall traffic)       |
-| ----------- |---------------------------------------|
-| 1           | Senegal, Mali, Ivory Coast            |
-| 2           | Ukraine, Romania, Moldova             |
-| 3           | China, Philippines, Sri Lanka         |
-| 4           | Egypt, Bangladesh, Morocco, Pakistan  |
-| 5           | EU, Russia, USA                       |
+| Cluster id  | Countries (>1% overall traffic)              |
+| ----------- |----------------------------------------------|
+| 1           | Senegal, Mali, Ivory Coast                   |
+| 2           | Ukraine, Romania, Moldova                    |
+| 3           | China, Philippines, Sri Lanka, Peru, Ecuador |
+| 4           | Egypt, Bangladesh, Morocco, Pakistan         |
+| 5           | EU, Russia, USA                              |
 {: .tablelines}
 <br>
 
+We can observe a pretty strong correlation between clusters of countries and regions of the world: the first cluster groups African countries, the second one Eastern European countries (except Russia), the third one groups South East Asia and South America, the fourth contains countries from North Africa to Asia through Middle East. Finally the fifth clusters corresponds to so-called western countries. Let's now plot the clusters of antennas on a map. 
+
 {% include image.html url="https://rguigoures.github.io/images/itcc_map.png" width=500 description="Fig.3 - Map of Milan. One square represent one antenna. There is one color per cluster." %}
 
-Minimizing the Kullback-Leibler divergence is equivalent the minizing the loss in mutual information between the original data and the compressed data. Mutual information measures how much the partition of countries give information about the partition of antenna, and vice versa. In other words, it measure how confident we are guessing the originating antenna knowing the destination country of the call. The mutual information matrix is defined as follows:
+The detailed map is available on [Github](https://github.com/rguigoures/rguigoures.github.io/blob/master/images/map_itcc.geojson). Clusters of antennas don't show an obvious geographical correlation. The yellow cluster groups contiguous antennas, mainly located in Milan downtown. Also purple antennas are mostly located in the city center. Other antennas are however spread in the outskirts of the city.
+
+To understand the the clustering, we need to visualize interractions between clusters of countries and clusters of antennas. To that end, let's introduce the concept of mutual information. Mutual information measures how much the partition of countries give information about the partition of antenna, and vice versa. In other words, it measure how confident we are guessing the originating antenna knowing the destination country of the call. Minimizing the Kullback-Leibler divergence is actually equivalent the minizing the loss in mutual information between the original data and the compressed data, that is exactly what the algorithm detailed above aims to do. The mutual information matrix is defined as follows:
 
 $$
 MI_{ij}(P_C) = P_{C,ij} \log \left( \dfrac{P_{C,ij}}{P_{C,i} P_{C,j}} \right)
@@ -163,7 +167,7 @@ $$
 
 The mutual information of the worst partition is null. In such a partition, occurences are distributed over the blocks and does not reflect the underlying structure of the initial matrix. This is the lowest bound of the mutual information. Conversely, the best partition maximizes the mutual information. The upper bound of the mutual information is equal to \\(H(P_B)\\), where \\(H\\) represents the Shannon entropy. Note that a clustering algorithm tracking cliques would not be able to produce such a partition but would put all nodes in a single cluster instead.
 
-In order to find the best partition, we apply an agglomerative hierarchical clustering, i.e we start allocating a single antenna to each cluster and we merge them successively so that the mutual information is maximized. Let's apply the algorithm to the call detail record. We fix the number of clusters to five for illustration purpose. To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Second, the mutual information matrix \\(M = \{m_{ij} \forall i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
+To evaluate the quality of the clustering, we visualise two matrices. First, the joint probability matrix \\(P\\). Second, the mutual information matrix \\(M = \{m_{ij} \forall i,j \in 1..k\}\\), where \\(MI(P) = \sum\sum m_{ij} \\).
 
 First, let's plot the two matrices for randomly initialized clusters.
 
