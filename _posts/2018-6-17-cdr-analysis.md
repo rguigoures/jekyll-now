@@ -40,7 +40,7 @@ Let's start by analyzing the data. The data set is a contingency table with the 
     text-align: center; 
 }
 </style>
-| Antenna Id | Country Id | counts |
+| Antenna Id | Country Id | calls  |
 | -----------|------------|--------|
 | A1         | C1         | 10     |
 | A2         | C1         | 10     |
@@ -49,8 +49,20 @@ Let's start by analyzing the data. The data set is a contingency table with the 
 {: .tablelines}
 <br>
 
+Let's turn this contigency table into a graph representation.
+
 {% include image.html url="https://rguigoures.github.io/images/graph_example.png" width=500 description="Fig.1 - Bipartite graph representing the contingency table above." %}
 
+Bipartite graphs are also often represented as adjacency matrices: rows represent one set of nodes (for example the antennas) and the columns represent the other set of node (for example the countries). The cells of the matrix correspond to the interractions density between both set of nodes, in the running example, it is the number of calls from an antenna to a country. The adjacency matrix of the toy example above can be written as follows:
+
+$$
+\begin{align}
+\begin{pmatrix}
+10 & 0 \\
+10 & 20 \\
+0 & 50 
+\end{pmatrix}
+$$
 
 # Information theoretic coclustering
 
