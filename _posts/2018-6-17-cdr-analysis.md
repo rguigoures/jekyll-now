@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analysis of a Call Detail Record (part 1) - from Information Theory to Bayesian Modeling
+title: Analysis of a Call Detail Record - from Information Theory to Bayesian Modeling
 ---
 A call detail record (CDR) is a data collected by telephone operators. It contains a sender, a receiver, a timestamp and the duration in case of a call. It is usually aggregated for customer's privacy matter. The CDR we use for this analysis is a public dataset collected in the region of Milan in Italy. The dataset is available on Kaggle and called [mobile phone activity](https://www.kaggle.com/marcodena/mobile-phone-activity).
 The CDR is pretty rich in information. The analysis in this post is based on the sms traffic. The data we use is then: the emitting antenna identifier, the receiving country and call counts. The goal of the analysis is to group antennas because their originating calls are similarly distributed over countries and - simultaneously - group countries because the received calls are distributed over the same antennas. This is called co-clustering. To do so, will first use a method based on information theory and define a set of measures to understand and visualize the results. Then, we will link the information theory to bayesian modeling, showing the benefits and difficulties using such an approach.
