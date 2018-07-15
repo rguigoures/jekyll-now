@@ -5,12 +5,52 @@ title: Analysis of a Call Detail Record (part 1) - from Information Theory to Ba
 A call detail record (CDR) is a data collected by telephone operators. It contains a sender, a receiver, a timestamp and the duration in case of a call. It is usually aggregated for customer's privacy matter. The CDR we use for this analysis is a public dataset collected in the region of Milan in Italy. The dataset is available on Kaggle and called [mobile phone activity](https://www.kaggle.com/marcodena/mobile-phone-activity).
 The CDR is pretty rich in information. The analysis in this post is based on the sms traffic. The data we use is then: the emitting antenna identifier, the receiving country and call counts. The goal of the analysis is to group antennas because their originating calls are similarly distributed over countries and - simultaneously - group countries because the received calls are distributed over the same antennas. This is called co-clustering. To do so, will first use a method based on information theory and define a set of measures to understand and visualize the results. Then, we will link the information theory to bayesian modeling, showing the benefits and difficulties using such an approach.
 
-In a different post, we propose to train an autoencoder to obtain a latent representation of the antennas, using the same data set.
-
 1. Table of content
 {:toc} 
 
 # Data representation
+
+Let's start by analyzing the data. The data set is a contingency table with the following columns: the emitting antenna, the receiving country and a decimal representing the number of calls for a certain area covered by an antenna. This number has been multiplied by a constant so that the real data cannot be reconstructed. In this post, we consider the data as a bipartite graph, i.e a graph containing two sets of nodes (the antennas and the countries). Edges connect one set to the other but cannot connect nodes belonging to the same set. Let's consider a simple example. We have the following contingency table:
+
+<style>
+.tablelines table {
+    color: #333; 
+    font-family: Helvetica, Arial, sans-serif; 
+    border-collapse: collapse; 
+    border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tablelines th { 
+    border: 1px solid #CCC; 
+    height: 38px;
+    padding-right:10px;
+    padding-left:10px;
+    vertical-align: middle;
+    background: #eff5fb; 
+    font-weight: bold; 
+} 
+.tablelines td {
+    border: 1px solid #CCC; 
+    height: 35px;
+    padding-right:10px;
+    padding-left:10px;
+    vertical-align: middle;
+    background: #ffffff; 
+    text-align: center; 
+}
+</style>
+| Antenna Id | Country Id | counts |
+| -----------|------------|--------|
+| A1         | C1         | 10     |
+| A2         | C1         | 10     |
+| A2         | C2         | 20     |
+| A3         | C2         | 50     |
+{: .tablelines}
+<br>
+
+{% include image.html url="https://rguigoures.github.io/images/graph_example.png" width=500 description="Fig.1 - Bipartite graph representing the contingency table above." %}
+
 
 # Information theoretic coclustering
 
@@ -202,4 +242,4 @@ where n is the number of observations (sms in th example) and \\(f_\mathcal{M}\\
 
 # References
 
-[^fn1]: Inderjit S. Dhillon et al., [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
+Inderjit S. Dhillon et al., [_Information-theoretic co-clustering_](http://www.cs.utexas.edu/users/inderjit/public_papers/kdd_cocluster.pdf), KDD 2003
