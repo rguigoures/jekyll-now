@@ -3,7 +3,7 @@ layout: post
 title: Tutorial - How to evaluate the confidence in a percentage?
 ---
 
-Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the population of France. It appeared that 64% of surveyed people declared planning to watch the games. This percentage has a confidence attached to it. The bigger the confidence, the more accurate the percentage and the more it can be generalized to the overall population. This confidence is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the confidence interval is. Let's use the example of the poll on football as an illustration.
+Percentage is one of the most common mathematical concept. At this time of world cup, a poll has been conducted to evaluate the football enthusiasm of the population of France. It appeared that 64% of surveyed people declared planning to watch the games and they were right (*edit July 15th, 2018*). This percentage has a confidence attached to it. The bigger the confidence, the more accurate the percentage and the more it can be generalized to the overall population. This confidence is seldom mentioned in the news. The goal of this tutorial is to show how to assess whether a percentage or a probability has been correctly estimated and how big the confidence interval is. Let's use the example of the poll on football as an illustration.
 
 **Note**: this is the blog version of the tutorial. If you want to reproduce the experiments, you can check the corresponding [Jupyter Notebook](https://github.com/rguigoures/tutorials/blob/master/ProportionsEvaluation.ipynb). 
 
