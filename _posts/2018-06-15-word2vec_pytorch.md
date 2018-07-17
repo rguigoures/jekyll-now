@@ -18,7 +18,7 @@ Let's introduce the basic NLP concepts:
 For the example, we use the news corpus from the Brown dataset, available on nltk. Non letter characters are removed from the string. Also the text is set in lowercase.
 
 
-```python
+```
 import itertools
 import re
 import nltk
