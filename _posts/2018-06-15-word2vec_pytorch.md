@@ -39,7 +39,7 @@ for cat in ['news']:
 **Subampling frequent words** 
 
 The first step in data preprocessing consists in balancing the word occurences in the data. To do so, we perform subsampling of frequent words. 
-Let's call $p_i$ the proportion of word $i$ in the corpus. Then the probability $P(w_i)$ of keeping the word in the corpus is defined as follows:
+Let's call \\(p_i\\) the proportion of word \\(i\\) in the corpus. Then the probability \\(P(w_i)\\) of keeping the word in the corpus is defined as follows:
 
 $$
 P(w_i) = \dfrac{10^{-3}}{p_i}\left(\sqrt{10^3 p_i} + 1\right)
@@ -284,7 +284,7 @@ The main difference from the network introduced above lies in the fact that we d
 
 The other main difference is that the loss needs to be computed on the observe output only, since we provide the expected output as well as a set of negative examples. To do so, we can use a negative logarithm of the output as a loss function.
 
-For a target word $w_T$, a context word $w_C$ and a negative example $w_N$, respective embeddings are defined as $e_T$, $e_C$ and $e_N$. The loss function $l$ is defined as follows:
+For a target word \\(w_T\\), a context word \\(w_C\\) and a negative example \\(w_N\\), respective embeddings are defined as \\(e_T\\), \\(e_C\\) and \\(e_N\\). The loss function \\(l\\) is defined as follows:
 
 $$
 l = -log(\sigma(e_T^T e_C)) - \displaystyle\sum_i log(\sigma(- e_T^T e_{N,i}))
