@@ -34,7 +34,8 @@ for cat in ['news']:
         text.replace('\n', ' ')
         text = re.sub('[^a-z ]+', '', text)
         corpus.append([w for w in text.split() if w != ''])
-```
+{% endhighlight %}
+
 
 **Subampling frequent words** 
 
@@ -61,8 +62,7 @@ def subsample_frequent_words(corpus):
             if random.random() < (1+math.sqrt(word_counts[word] * 1e3)) * 1e-3 / float(word_counts[word]):
                 filtered_corpus[-1].append(word)
     return filtered_corpus
-{% endhighlight %}
-
+```
 
 ```python
 corpus = subsample_frequent_words(corpus)
