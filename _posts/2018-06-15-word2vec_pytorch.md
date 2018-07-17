@@ -18,7 +18,7 @@ Let's introduce the basic NLP concepts:
 For the example, we use the news corpus from the Brown dataset, available on nltk. Non letter characters are removed from the string. Also the text is set in lowercase.
 
 
-```python
+{% highlight python %}
 import re
 import nltk
 nltk.download('brown')
@@ -61,7 +61,7 @@ def subsample_frequent_words(corpus):
             if random.random() < (1+math.sqrt(word_counts[word] * 1e3)) * 1e-3 / float(word_counts[word]):
                 filtered_corpus[-1].append(word)
     return filtered_corpus
-```
+{% endhighlight %}
 
 
 ```python
