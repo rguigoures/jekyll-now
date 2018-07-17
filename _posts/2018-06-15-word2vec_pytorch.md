@@ -18,7 +18,7 @@ Let's introduce the basic NLP concepts:
 For the example, we use the news corpus from the Brown dataset, available on nltk. Non letter characters are removed from the string. Also the text is set in lowercase.
 
 
-<div class="highlight"><pre class="highlight"><code>import itertools
+```python
 import re
 import nltk
 nltk.download('brown')
@@ -34,7 +34,7 @@ for cat in ['news']:
         text.replace('\n', ' ')
         text = re.sub('[^a-z ]+', '', text)
         corpus.append([w for w in text.split() if w != ''])
-</code></pre></div>
+```
 
 **Subampling frequent words** 
 
