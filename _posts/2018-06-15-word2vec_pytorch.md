@@ -37,7 +37,7 @@ for cat in ['news']:
 {% endhighlight %}
 
 
-**Subampling frequent words** 
+**Subsampling frequent words** 
 
 The first step in data preprocessing consists in balancing the word occurences in the data. To do so, we perform subsampling of frequent words. 
 Let's call \\(p_i\\) the proportion of word \\(i\\) in the corpus. Then the probability \\(P(w_i)\\) of keeping the word in the corpus is defined as follows:
